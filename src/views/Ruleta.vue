@@ -16,7 +16,21 @@
     </v-row>
 
     <v-row>
-      <v-col> </v-col>
+      <v-col> 
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </v-col>
 
       <v-col>
         <h1>Responde</h1>
