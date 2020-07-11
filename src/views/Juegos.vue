@@ -1,9 +1,9 @@
 <template>
   <v-container>
-   <Carrusel />
+    <Carrusel /><br />
 
     <v-row>
-      <v-col cols="12" sm="6">
+      <v-col cols="12" sm="6" align="center">
         <v-layout>
           <v-flex>
             <v-btn @click="irRuleta" dark color="green">
@@ -13,7 +13,7 @@
         </v-layout>
       </v-col>
 
-      <v-col cols="12" sm="6">
+      <v-col cols="12" sm="6" align="center">
         <v-layout>
           <v-flex>
             <v-btn dark color="blue">
@@ -30,7 +30,6 @@
       repellendus molestias tenetur deserunt? Non molestiae nobis repellat error
       fugiat sequi aspernatur.
     </p>
-     
   </v-container>
 </template>
 

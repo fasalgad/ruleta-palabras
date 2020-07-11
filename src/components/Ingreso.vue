@@ -16,7 +16,7 @@
     </v-row>
 
     <v-row>
-      <v-col> </v-col>
+      <v-col>   <Preguntas /> </v-col>
 
       <v-col>
         <h1>Responde</h1>
@@ -43,8 +43,9 @@
       </v-col>
     </v-row>
 
-    <v-row>
-      <v-col align="center">
+   
+    
+ 
         <v-layout>
           <v-flex>
             <v-btn @click="irHome" color="blue">
@@ -52,15 +53,18 @@
             </v-btn>
           </v-flex>
         </v-layout>
-      </v-col>
-    </v-row>
+      
+  
   </v-container>
 </template>
 
 
 <script>
+import Preguntas from '@/components/Preguntas.vue'
 export default {
- 
+ components:{
+Preguntas
+ },
 
 
       methods: {
