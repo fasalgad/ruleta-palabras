@@ -1,5 +1,5 @@
 <template>
-    <v-container>
+  <v-container>
     <v-row>
       <v-col cols="12" sm="4">
         <p>La ruleta palabra consiste en bla bla bla</p>
@@ -16,7 +16,7 @@
     </v-row>
 
     <v-row>
-      <v-col>   <Preguntas /> </v-col>
+      <v-col> <Preguntas /> </v-col>
 
       <v-col>
         <h1>Responde</h1>
@@ -43,37 +43,33 @@
       </v-col>
     </v-row>
 
-   
+    <v-layout>
+      <v-flex>
+        <v-btn @click="irHome" color="blue">
+          Volver al inicio
+        </v-btn>
+      </v-flex>
+    </v-layout>
+
     
- 
-        <v-layout>
-          <v-flex>
-            <v-btn @click="irHome" color="blue">
-              Volver al inicio
-            </v-btn>
-          </v-flex>
-        </v-layout>
-      
-  
   </v-container>
 </template>
-
 
 <script>
 import Preguntas from '@/components/Preguntas.vue'
 export default {
- components:{
-Preguntas
- },
+  components: {
+    Preguntas
+  },
 
+  methods: {
 
-      methods: {
     irHome () {
       console.log('this.$route', this.$route)
       console.log('this.$router', this.$router)
       this.$router.push('/')
     }
   },
-     name: 'Ingreso'
+  name: 'Ingreso'
 }
 </script>

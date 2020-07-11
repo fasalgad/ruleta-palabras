@@ -1,8 +1,38 @@
 <template>
   <div>
     <p>
-    holalalalalalallaalalllalal
+      A: Perteneciente o relativo al análisis.
     </p>
+    <p>
+      B: Persona que recolecta o vende bellotas.
+    </p>
+    <p>
+      C: Instrumento musical de percusión, de origen cubano, que consiste en dos
+      palos pequeños que se golpean uno contra otro.
+    </p>
+    <p>D: Arrancar o quitar un clavo.</p>
+    <p>E: Dicho de un terreno: propio para edificar.</p>
+    <p>F: Modo o manera en que se hace o en que ocurre algo.</p>
+    <p>G: Vocablo o giro propio de la lengua que hablan los gitanos.</p>
+    <p>H: Soldado que usaba honda en la guerra.</p>
+    <p>I: Falta de advertencia.</p>
+    <p>J: Contiene J: De manera injustificada.</p>
+    <p>L: Esfuerzo que se hace para resistir a una fuerza hostil o a una tentación, para subsistir o para alcanzar algún objetivo.</p>
+    <p>M: Pulsar en un teléfono los números de otro para comunicar con él.</p>
+    <p>N: Contiene N: Que presenta desnivel.</p>
+    <p>Ñ: Contiene ñ: Parte del vestido que cubre el torso.</p>
+    <p>O: Perteneciente o relativo a la oceanografía.</p>
+    <p>P: Obsequio, regalo que alguien da a otra persona en señal de reconocimiento o de afecto.</p>
+    <p>Q: Contiene Q: Ceremonial de los estilos, usos y costumbres que se debe guardar en actos públicos solemnes. </p>
+    <p>R: Entregar a personas distintas lo que han encargado o deben recibir.</p>
+    <p>S: Acción y efecto de subarrendar.  </p>
+    <p>T: Que tiene tres flores. </p>
+    <p>U: Contiene U:  Hacer cuádruple algo o multiplicarlo por cuatro.</p>
+    <p>V: Hoja impresa, de carácter político o publicitario, que se reparte en lugares públicos.</p>
+    <p>X: Contiene x:  Acción y efecto de extinguir o extinguirse.</p>
+    <p>Y: Contiene Y: Perteneciente o relativo a los homosexuales.</p>
+    <p>Z: Parte de la arqueología que se ocupa especialmente del estudio de restos de animales en yacimientos de antiguas culturas.</p>
+    
   </div>
 </template>
 
