@@ -3,8 +3,9 @@
     
       <Ingreso />
      
-   
+
   </div>
+  
 </template>
 
 <script>
