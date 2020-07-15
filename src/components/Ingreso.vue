@@ -1,53 +1,68 @@
 <template>
   <v-container>
-    <v-row> </v-row>
-
     <v-row>
       <v-col>
-        <p>hola</p>
         <ul>
-          <li v-for="(palabra, index) in palabras"
-            :key="index">
-        {{ item.descripcion }}
+          <li
+            v-for="(palabra, index) in palabras"
+            :key="index"
+            @click="seleccionado(palabra)"
+          >
+            {{ palabra.letra }}
+            {{ palabra.descripcion }}
           </li>
         </ul>
       </v-col>
 
       <v-col>
-        <h1>Responde</h1>
-        <br />
-
-        <v-row align="center">
+        <v-form
+          ref="form"
+          v-model="valid"
+          :lazy-validation="lazy"
+          @submit.prevent="validate"
+        >
           <v-text-field
+            v-model="termino"
+            :counter="10"
+            :rules="palRules"
             label="Palabra"
-            v-model="NuevaPalabra"
             required
-            placeholder="Términsso"
-            @input.enter="agregarpalabra"
           ></v-text-field>
-          <v-btn color="warning" class="mr-4" @click="saltar">
-            Pasa Palabra
+
+          <v-btn
+            :disabled="!valid"
+            color="success"
+            class="mr-4"
+            @click="validate"
+          >
+            Aceptar
           </v-btn>
 
-          <v-btn color="blue" v-on:click="agregarpalabra">Comprobar</v-btn>
-        </v-row>
+          <v-btn color="error" class="mr-4" @click="reset">
+            Vaciar
+          </v-btn>
+        </v-form>
       </v-col>
     </v-row>
 
-    <v-layout>
-      <v-flex>
-        <v-btn @click="irHome" color="blue">
-          Volver al inicio
-        </v-btn>
-      </v-flex>
-    </v-layout>
+    <v-btn @click="irHome" color="blue">
+      Volver al inicio
+    </v-btn>
   </v-container>
 </template>
 
 <script>
 export default {
   name: 'Ingreso',
-  data: {
+  data: () => ({
+    valid: true,
+    termino: '',
+    palabraseleccionada: '',
+    lazy: true,
+    palRules: [
+      v => !!v || 'Palabra es requerida',
+      v => (v && v.length > 0) || 'No puede estar vacio'
+    ],
     palabras: [
       {
         id: '1',
@@ -55,7 +70,6 @@ export default {
         significado: 'Analítico',
         descripcion: 'Perteneciente o relativo al análisis.'
       },
-      ,
       {
         id: '2',
         letra: 'B',
@@ -226,8 +240,12 @@ export default {
         descripcion:
           'Planta cucurbitácea de tallos rastreros y provistos de zarcillos, hojas grandes, anchas y lobuladas, flores amarillas y fruto comestible, con multitud de semillas aplanadas; existen varias especies.'
       }
-    ],
-    NuevaPalabra: ''
+    ]
+  }),
+  mounted () {
+    this.palabraseleccionada = this.palabras.filter(el => {
+      return el.letra.toLowerCase() == 'a'
+    })[0]
   },
 
   methods: {
@@ -235,10 +253,22 @@ export default {
       console.log('this.$route', this.$route)
       console.log('this.$router', this.$router)
       this.$router.push('/')
+    },
+    seleccionado (palabra) {
+      console.log(palabra)
+    },
+    reset () {
+      console.log('Reestableciendo')
+    },
+    agregarpalabra () {
+      this.NuevaPalabra = ''
+    },
+    validate () {
+      if (this.$refs.form.validate()) {
+        console.log(this.termino)
+        console.log(this.palabraseleccionada)
+      }
     }
-  },
-  agregarpalabra () {
-    this.NuevaPalabra = ''
   }
 }
 </script>
