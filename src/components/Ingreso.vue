@@ -49,8 +49,8 @@
             Aceptar
           </v-btn>
 
-          <v-btn color="error" class="mr-4" @click="reset">
-            Vaciar
+          <v-btn color="error" class="mr-4" @click="saltar">
+            Siguiente
           </v-btn>
         </v-form>
       </v-col>
@@ -269,12 +269,10 @@ export default {
     seleccionado (palabra) {
       console.log(palabra)
     },
-    reset () {
-      console.log('Reestableciendo')
+    saltar () {
+      console.log('Saltando')
     },
-    agregarpalabra () {
-      this.NuevaPalabra = ''
-    },
+    
     validate () {
       if (this.$refs.form.validate()) {
         console.log(this.termino)
