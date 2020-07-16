@@ -2,16 +2,27 @@
   <v-container>
     <v-row>
       <v-col>
-        <ul>
-          <li
-            v-for="(palabra, index) in palabras"
-            :key="index"
-            @click="seleccionado(palabra)"
-          >
-            {{ palabra.letra }}
-            {{ palabra.descripcion }}
-          </li>
-        </ul>
+        <v-card class="mx-auto" max-width="1080" tile>
+          <v-list rounded>
+            <v-subheader>Lista</v-subheader>
+            <v-list-item-group v-model="item" color="green">
+              <v-list-item
+                v-for="(palabra, index) in palabras"
+                :key="index"
+                @click="seleccionado(palabra)"
+              >
+                {{ palabra.letra }}
+                {{ palabra.descripcion }}
+                <v-list-item-icon>
+                  <v-icon v-text="item.icon"></v-icon>
+                </v-list-item-icon>
+                <v-list-item-content>
+                  <v-list-item-title v-text="item.text"></v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+            </v-list-item-group>
+          </v-list>
+        </v-card>
       </v-col>
 
       <v-col>
@@ -55,6 +66,7 @@
 export default {
   name: 'Ingreso',
   data: () => ({
+    item: 0, //posición en que inicia la lista
     valid: true,
     termino: '',
     palabraseleccionada: '',

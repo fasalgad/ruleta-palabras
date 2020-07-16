@@ -16,7 +16,7 @@
       <v-col cols="12" sm="6" align="center">
         <v-layout>
           <v-flex>
-            <v-btn dark color="blue" @click="irFormulario">
+            <v-btn dark color="blue" @click="irFormulario" disabled="true">
               Mirar más
             </v-btn>
           </v-flex>
@@ -49,11 +49,11 @@ export default {
       console.log('this.$router', this.$router)
       this.$router.push('Ruleta')
     },
-      irFormulario () {
+     /* irFormulario () {
       console.log('this.$route', this.$route)
       console.log('this.$router', this.$router)
-      this.$router.push('Formulario')
-    }
+      this.$router.push('Form')
+    }*/
   }
 }
 </script>
