@@ -69,6 +69,7 @@ export default {
     item: 0, //posición en que inicia la lista
     valid: true,
     termino: '',
+
     palabraseleccionada: '',
     lazy: true,
 
@@ -256,13 +257,18 @@ export default {
     ]
   }),
 
-  mounted () {
-    this.palabraseleccionada = this.palabras.filter(el => {
-      return el.id.toLowerCase() == '1'
-    })[0]
-  },
-  
   methods: {
+    validate () {
+      if (this.$refs.form.validate()) {
+        console.log(this.termino)
+        console.log(this.palabraseleccionada)
+        this.item++
+        this.termino = ''
+        if (this.item > 26) {
+          this.item = 0
+        }
+      }
+    },
     irHome () {
       console.log('this.$route', this.$route)
       console.log('this.$router', this.$router)
@@ -276,18 +282,13 @@ export default {
       if (this.item > 26) {
         this.item = 0
       }
-
       console.log('Saltando')
-    },
-
-    validate () {
-      if (this.$refs.form.validate()) {
-        console.log(this.termino)
-        console.log(this.palabraseleccionada)
-        this.item++
-        this.termino = ''
-      }
     }
+  },
+  mounted () {
+    this.palabraseleccionada = this.palabras.filter(el => {
+      return el.id.toLowerCase() == 1
+    })[0]
   }
 }
 </script>
