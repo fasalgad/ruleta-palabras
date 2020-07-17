@@ -71,6 +71,7 @@ export default {
     termino: '',
     palabraseleccionada: '',
     lazy: true,
+
     palRules: [
       v => !!v || 'Palabra es requerida',
       v => (v && v.length > 0) || 'No puede estar vacio'
@@ -254,12 +255,13 @@ export default {
       }
     ]
   }),
+
   mounted () {
     this.palabraseleccionada = this.palabras.filter(el => {
-      return el.letra.toLowerCase() == 'a'
+      return el.id.toLowerCase() == '1'
     })[0]
   },
-
+  
   methods: {
     irHome () {
       console.log('this.$route', this.$route)
@@ -267,15 +269,14 @@ export default {
       this.$router.push('/')
     },
     seleccionado (palabra) {
-  
       console.log(palabra)
     },
     saltar () {
       this.item++
       if (this.item > 26) {
-        this.item=0;
+        this.item = 0
       }
-      this.palabras
+
       console.log('Saltando')
     },
 
@@ -283,6 +284,8 @@ export default {
       if (this.$refs.form.validate()) {
         console.log(this.termino)
         console.log(this.palabraseleccionada)
+        this.item++
+        this.termino = ''
       }
     }
   }
