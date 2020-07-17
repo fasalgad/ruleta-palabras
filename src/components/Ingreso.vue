@@ -267,12 +267,18 @@ export default {
       this.$router.push('/')
     },
     seleccionado (palabra) {
+  
       console.log(palabra)
     },
     saltar () {
+      this.item++
+      if (this.item > 26) {
+        this.item=0;
+      }
+      this.palabras
       console.log('Saltando')
     },
-    
+
     validate () {
       if (this.$refs.form.validate()) {
         console.log(this.termino)
