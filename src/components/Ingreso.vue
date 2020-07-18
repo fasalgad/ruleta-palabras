@@ -5,14 +5,16 @@
         <v-card class="mx-auto" max-width="1080" tile>
           <v-list rounded>
             <v-subheader>Lista de Palabras</v-subheader>
-            <v-list-item-group v-model="item" color="blue">
+            <v-list-item-group v-model="item" color="green">
               <v-list-item
                 v-for="(palabra, index) in palabras"
                 :key="index"
+                :style="estilo1"
                 @click="seleccionado(palabra)"
               >
                 {{ palabra.letra }}
                 {{ palabra.descripcion }}
+
                 <v-list-item-icon>
                   <v-icon v-text="item.icon"></v-icon>
                 </v-list-item-icon>
@@ -69,7 +71,7 @@ export default {
     item: 0, //posición en que inicia la lista
     valid: true,
     termino: '',
-
+    estilo1: { border: '', 'font-size': '15px' },
     palabraseleccionada: '',
     lazy: true,
 
@@ -179,7 +181,7 @@ export default {
         letra: 'N',
         nextLetra: 'Ñ',
         significado: 'Nivelado',
-        descripcion: 'Contiene N: Que presenta desnivel.'
+        descripcion: 'Que presenta desnivel.'
       },
       {
         id: '15',
@@ -300,21 +302,29 @@ export default {
             ele => ele.letra == this.palabraseleccionada.nextLetra
           )[0]
 
+          
+
+          this['estilo1'] = {
+            border: 'solid blue'
+          }
           this.item++
           this.termino = ''
           ///// Aqui deberia intentar cambiar el color
           if (this.item > 26) {
             this.item = 0
           }
-        } else {
-          this.item++
+        } /*else {
+          
+         /* this.item++
           this.termino = ''
+           this['estilo1']={
+            border:'solid red '
+          }
           if (this.item > 26) {
             this.item = 0
           }
-          /// aqui deberia dejar en roja esta palaba
-          //escribir código cuando no es igual la palabra
-        }
+  
+        } */
       }
     },
     irHome () {
@@ -323,16 +333,20 @@ export default {
       this.$router.push('/')
     },
     seleccionado (palabra) {
-      this.palabraseleccionada==palabra
+      this.palabraseleccionada == palabra
     },
     saltar () {
-    //  this.item
       //poner en color amarillo
       this.item++
       if (this.item > 26) {
         this.item = 0
       }
-      console.log('Saltando')
+      //  console.log('Saltando')
+
+      console.log(this.palabraseleccionada.nextLetra)
+      this.palabraseleccionada = this.palabras.filter(
+        ele => ele.letra == this.palabraseleccionada.nextLetra
+      )[0]
     }
   },
   mounted () {
