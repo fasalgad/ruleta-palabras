@@ -66,7 +66,8 @@
 export default {
   name: 'Ingreso',
   data: () => ({
-    item: 0, //posición en que inicia la lista
+    
+    item: i, //posición en que inicia la lista
     valid: true,
     termino: '',
 
@@ -81,18 +82,21 @@ export default {
       {
         id: '1',
         letra: 'A',
+        nextLetra: 'B',
         significado: 'Analítico',
         descripcion: 'Perteneciente o relativo al análisis.'
       },
       {
         id: '2',
         letra: 'B',
+        nextLetra: 'C',
         significado: 'Bellotero',
         descripcion: 'Persona que recolecta o vende bellotas.'
       },
       {
         id: '3',
         letra: 'C',
+        nextLetra: 'D',
         significado: 'Clave',
         descripcion:
           'Código de signos convencionales y cifrados que se emplea para escribir y leer mensajes secretos para otras personas.'
@@ -100,24 +104,28 @@ export default {
       {
         id: '4',
         letra: 'D',
+        nextLetra: 'E',
         significado: 'Desclavar',
         descripcion: 'Arrancar o quitar un clavo'
       },
       {
         id: '5',
         letra: 'E',
+        nextLetra: 'F',
         significado: 'Edificable',
         descripcion: 'Dicho de un terreno: propio para edificar'
       },
       {
         id: '6',
         letra: 'F',
+        nextLetra: 'G',
         significado: 'Forma',
         descripcion: 'Modo o manera en que se hace o en que ocurre algo'
       },
       {
         id: '7',
         letra: 'G',
+        nextLetra: 'H',
         significado: 'Gitanismo',
         descripcion:
           'Vocablo o giro propio de la lengua que hablan los gitanos.'
@@ -125,24 +133,28 @@ export default {
       {
         id: '8',
         letra: 'H',
+        nextLetra: 'I',
         significado: 'Hondero',
         descripcion: 'Soldado que usaba honda en la guerra.  '
       },
       {
         id: '9',
         letra: 'I',
+        nextLetra: 'J',
         significado: 'Inadvertencia',
         descripcion: 'Falta de advertencia.'
       },
       {
         id: '10',
         letra: 'J',
+        nextLetra: 'K',
         significado: 'justificadamente',
         descripcion: 'De manera justificada'
       },
       {
         id: '11',
         letra: 'K',
+        nextLetra: 'L',
         significado: 'Kilogramo',
         descripcion:
           'Unidad de masa del Sistema Internacional, de símbolo kg, que equivale a la masa del prototipo de platino iridiado que se encuentra en la Oficina Internacional de Pesas y Medidas de París.'
@@ -150,6 +162,7 @@ export default {
       {
         id: '12',
         letra: 'L',
+        nextLetra: 'M',
         significado: 'Lucha',
         descripcion:
           'Esfuerzo que se hace para resistir a una fuerza hostil o a una tentación, para subsistir o para alcanzar algún objetivo'
@@ -157,6 +170,7 @@ export default {
       {
         id: '13',
         letra: 'M',
+        nextLetra: 'N',
         significado: 'Marcar',
         descripcion:
           'Pulsar en un teléfono los números de otro para comunicar con él.'
@@ -164,24 +178,28 @@ export default {
       {
         id: '14',
         letra: 'N',
+        nextLetra: 'Ñ',
         significado: 'Nivelado',
         descripcion: 'Contiene N: Que presenta desnivel.'
       },
       {
         id: '15',
         letra: 'Ñ',
+        nextLetra: 'O',
         significado: 'Ñoñería',
         descripcion: 'Algo soso o con poca gracia'
       },
       {
         id: '16',
         letra: 'O',
+        nextLetra: 'P',
         significado: 'Oceanográfico',
         descripcion: 'Perteneciente o relativo a la oceanografía'
       },
       {
         id: '17',
         letra: 'P',
+        nextLetra: 'Q',
         significado: 'Presente',
         descripcion:
           'Obsequio, regalo que alguien da a otra persona en señal de reconocimiento o de afecto.'
@@ -189,6 +207,7 @@ export default {
       {
         id: '18',
         letra: 'Q',
+        nextLetra: 'R',
         significado: 'Quisquilloso',
         descripcion:
           'Que se ofende fácilmente por cosas insignificantes a las que da mayor valor o importancia de la que merecen.'
@@ -196,6 +215,7 @@ export default {
       {
         id: '19',
         letra: 'R',
+        nextLetra: 'S',
         significado: 'Repartir',
         descripcion:
           'Entregar a personas distintas lo que han encargado o deben recibir'
@@ -203,18 +223,21 @@ export default {
       {
         id: '20',
         letra: 'S',
+        nextLetra: 'T',
         significado: 'Subarriendo',
         descripcion: 'Acción y efecto de subarrendar'
       },
       {
         id: '21',
         letra: 'T',
+        nextLetra: 'U',
         significado: 'Trifloro',
         descripcion: 'Que tiene tres flores'
       },
       {
         id: '22',
         letra: 'U',
+        nextLetra: 'V',
         significado: 'Ukelele',
         descripcion:
           'Instrumento musical de cuerdas similar a la guitarra pero de menor tamaño.'
@@ -222,6 +245,7 @@ export default {
       {
         id: '23',
         letra: 'V',
+        nextLetra: 'W',
         significado: 'Volante',
         descripcion:
           'Hoja impresa, de carácter político o publicitario, que se reparte en lugares públicos.'
@@ -229,6 +253,7 @@ export default {
       {
         id: '24',
         letra: 'W',
+        nextLetra: 'X',
         significado: 'Web',
         descripcion:
           'Conjunto de información que se encuentra en una dirección determinada de internet.'
@@ -236,6 +261,7 @@ export default {
       {
         id: '25',
         letra: 'X',
+        nextLetra: 'Y',
         significado: 'Xilófono',
         descripcion:
           'Instrumento musical de percusión compuesto de láminas de madera o metal.'
@@ -243,6 +269,7 @@ export default {
       {
         id: '26',
         letra: 'Y',
+        nextLetra: 'Z',
         significado: 'Yo',
         descripcion:
           'Pronombre con el que la persona que habla o escribe se refiere a sí misma; es la forma del pronombre personal de primera persona del singular cuando ejerce la función de sujeto, tanto en masculino como en femenino.'
@@ -250,6 +277,7 @@ export default {
       {
         id: '27',
         letra: 'Z',
+        nextLetra: 'A',
         significado: 'Zapallo',
         descripcion:
           'Planta cucurbitácea de tallos rastreros y provistos de zarcillos, hojas grandes, anchas y lobuladas, flores amarillas y fruto comestible, con multitud de semillas aplanadas; existen varias especies.'
@@ -262,10 +290,26 @@ export default {
       if (this.$refs.form.validate()) {
         console.log(this.termino)
         console.log(this.palabraseleccionada)
-        this.item++
-        this.termino = ''
-        if (this.item > 26) {
-          this.item = 0
+        if (
+          this.palabraseleccionada.significado.toLowerCase() ==
+          this.termino.toLowerCase()
+        ) {
+          //Cuando la palabra es igual
+          //Debe pasar a la siguiente letra
+          console.log(this.palabraseleccionada.letra)
+          this.palabraseleccionada = this.palabras.filter(
+            ele => ele.letra == this.palabraseleccionada.nextLetra
+          )[0]
+          
+          this.item++
+
+          this.termino = ''
+          if (this.item > 26) {
+            this.item = 0
+          }
+          
+        } else {
+          //escribir código cuando no es igual la palabra
         }
       }
     },
@@ -275,7 +319,7 @@ export default {
       this.$router.push('/')
     },
     seleccionado (palabra) {
-      console.log(palabra)
+      //Usar la variable this.palabraseleccionada para realmente dejar seleccionada
     },
     saltar () {
       this.item++
