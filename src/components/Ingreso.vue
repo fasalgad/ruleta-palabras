@@ -4,8 +4,8 @@
       <v-col>
         <v-card class="mx-auto" max-width="1080" tile>
           <v-list rounded>
-            <v-subheader>Lista</v-subheader>
-            <v-list-item-group v-model="item" color="green">
+            <v-subheader>Lista de Palabras</v-subheader>
+            <v-list-item-group v-model="item" color="blue">
               <v-list-item
                 v-for="(palabra, index) in palabras"
                 :key="index"
@@ -66,8 +66,7 @@
 export default {
   name: 'Ingreso',
   data: () => ({
-    
-    item: i, //posición en que inicia la lista
+    item: 0, //posición en que inicia la lista
     valid: true,
     termino: '',
 
@@ -300,15 +299,20 @@ export default {
           this.palabraseleccionada = this.palabras.filter(
             ele => ele.letra == this.palabraseleccionada.nextLetra
           )[0]
-          
-          this.item++
 
+          this.item++
+          this.termino = ''
+          ///// Aqui deberia intentar cambiar el color
+          if (this.item > 26) {
+            this.item = 0
+          }
+        } else {
+          this.item++
           this.termino = ''
           if (this.item > 26) {
             this.item = 0
           }
-          
-        } else {
+          /// aqui deberia dejar en roja esta palaba
           //escribir código cuando no es igual la palabra
         }
       }
@@ -319,9 +323,11 @@ export default {
       this.$router.push('/')
     },
     seleccionado (palabra) {
-      //Usar la variable this.palabraseleccionada para realmente dejar seleccionada
+      this.palabraseleccionada==palabra
     },
     saltar () {
+    //  this.item
+      //poner en color amarillo
       this.item++
       if (this.item > 26) {
         this.item = 0
