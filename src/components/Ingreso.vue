@@ -295,6 +295,18 @@ export default {
           this.palabraseleccionada.significado.toLowerCase() ==
           this.termino.toLowerCase()
         ) {
+
+
+
+          this['estilo1'] = {
+            border: 'solid blue'
+          }
+
+
+
+
+
+          
           //Cuando la palabra es igual
           //Debe pasar a la siguiente letra
           console.log(this.palabraseleccionada.letra)
@@ -302,11 +314,9 @@ export default {
             ele => ele.letra == this.palabraseleccionada.nextLetra
           )[0]
 
-          
+        
 
-          this['estilo1'] = {
-            border: 'solid blue'
-          }
+          
           this.item++
           this.termino = ''
           ///// Aqui deberia intentar cambiar el color
@@ -314,7 +324,7 @@ export default {
             this.item = 0
           }
         } /*else {
-          
+
          /* this.item++
           this.termino = ''
            this['estilo1']={
@@ -323,7 +333,7 @@ export default {
           if (this.item > 26) {
             this.item = 0
           }
-  
+
         } */
       }
     },
