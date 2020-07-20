@@ -71,7 +71,6 @@
 </template>
 
 <script>
-import palabras from '../services/palabras'
 export default {
   name: 'Ingreso',
   data: () => ({
@@ -426,9 +425,7 @@ export default {
       )[0]
     }
   },
-  async created () {
-    this.palabras = await palabras
-  },
+
   mounted () {
     this.palabraseleccionada = this.palabras.filter(el => {
       return el.id.toLowerCase() == 1
