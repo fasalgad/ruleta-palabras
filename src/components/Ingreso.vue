@@ -10,7 +10,8 @@
                 v-for="(palabra, index) in palabras"
                 :key="index"
                 :style="estilo1"
-                @click="seleccionado(palabra)"
+                @click="seleccionado(palabra, index)"
+                :class="palabra.estilo"
               >
                 {{ palabra.letra }}
                 {{ palabra.descripcion }}
@@ -55,6 +56,11 @@
             Siguiente
           </v-btn>
         </v-form>
+        <v-row>
+          <v-col>
+            <label>Correctas: {{ correctas }}</label>
+          </v-col>
+        </v-row>
       </v-col>
     </v-row>
 
@@ -65,12 +71,14 @@
 </template>
 
 <script>
+import palabras from '../services/palabras'
 export default {
   name: 'Ingreso',
   data: () => ({
     item: 0, //posición en que inicia la lista
     valid: true,
     termino: '',
+    correctas: 0,
     estilo1: { border: '', 'font-size': '15px' },
     palabraseleccionada: '',
     lazy: true,
@@ -85,6 +93,8 @@ export default {
         letra: 'A',
         nextLetra: 'B',
         significado: 'Analítico',
+        estilo: 'estilo-basico',
+        activa: true,
         descripcion: 'Perteneciente o relativo al análisis.'
       },
       {
@@ -92,6 +102,8 @@ export default {
         letra: 'B',
         nextLetra: 'C',
         significado: 'Bellotero',
+        estilo: 'estilo-basico',
+        activa: true,
         descripcion: 'Persona que recolecta o vende bellotas.'
       },
       {
@@ -99,6 +111,8 @@ export default {
         letra: 'C',
         nextLetra: 'D',
         significado: 'Clave',
+        estilo: 'estilo-basico',
+        activa: true,
         descripcion:
           'Código de signos convencionales y cifrados que se emplea para escribir y leer mensajes secretos para otras personas.'
       },
@@ -107,6 +121,8 @@ export default {
         letra: 'D',
         nextLetra: 'E',
         significado: 'Desclavar',
+        estilo: 'estilo-basico',
+        activa: true,
         descripcion: 'Arrancar o quitar un clavo'
       },
       {
@@ -114,6 +130,8 @@ export default {
         letra: 'E',
         nextLetra: 'F',
         significado: 'Edificable',
+        estilo: 'estilo-basico',
+        activa: true,
         descripcion: 'Dicho de un terreno: propio para edificar'
       },
       {
@@ -121,6 +139,8 @@ export default {
         letra: 'F',
         nextLetra: 'G',
         significado: 'Forma',
+        estilo: 'estilo-basico',
+        activa: true,
         descripcion: 'Modo o manera en que se hace o en que ocurre algo'
       },
       {
@@ -128,6 +148,8 @@ export default {
         letra: 'G',
         nextLetra: 'H',
         significado: 'Gitanismo',
+        estilo: 'estilo-basico',
+        activa: true,
         descripcion:
           'Vocablo o giro propio de la lengua que hablan los gitanos.'
       },
@@ -136,6 +158,8 @@ export default {
         letra: 'H',
         nextLetra: 'I',
         significado: 'Hondero',
+        estilo: 'estilo-basico',
+        activa: true,
         descripcion: 'Soldado que usaba honda en la guerra.  '
       },
       {
@@ -143,6 +167,8 @@ export default {
         letra: 'I',
         nextLetra: 'J',
         significado: 'Inadvertencia',
+        estilo: 'estilo-basico',
+        activa: true,
         descripcion: 'Falta de advertencia.'
       },
       {
@@ -150,6 +176,8 @@ export default {
         letra: 'J',
         nextLetra: 'K',
         significado: 'justificadamente',
+        estilo: 'estilo-basico',
+        activa: true,
         descripcion: 'De manera justificada'
       },
       {
@@ -157,6 +185,8 @@ export default {
         letra: 'K',
         nextLetra: 'L',
         significado: 'Kilogramo',
+        estilo: 'estilo-basico',
+        activa: true,
         descripcion:
           'Unidad de masa del Sistema Internacional, de símbolo kg, que equivale a la masa del prototipo de platino iridiado que se encuentra en la Oficina Internacional de Pesas y Medidas de París.'
       },
@@ -165,6 +195,8 @@ export default {
         letra: 'L',
         nextLetra: 'M',
         significado: 'Lucha',
+        estilo: 'estilo-basico',
+        activa: true,
         descripcion:
           'Esfuerzo que se hace para resistir a una fuerza hostil o a una tentación, para subsistir o para alcanzar algún objetivo'
       },
@@ -173,6 +205,8 @@ export default {
         letra: 'M',
         nextLetra: 'N',
         significado: 'Marcar',
+        estilo: 'estilo-basico',
+        activa: true,
         descripcion:
           'Pulsar en un teléfono los números de otro para comunicar con él.'
       },
@@ -181,6 +215,8 @@ export default {
         letra: 'N',
         nextLetra: 'Ñ',
         significado: 'Nivelado',
+        estilo: 'estilo-basico',
+        activa: true,
         descripcion: 'Que presenta desnivel.'
       },
       {
@@ -188,6 +224,8 @@ export default {
         letra: 'Ñ',
         nextLetra: 'O',
         significado: 'Ñoñería',
+        estilo: 'estilo-basico',
+        activa: true,
         descripcion: 'Algo soso o con poca gracia'
       },
       {
@@ -195,6 +233,8 @@ export default {
         letra: 'O',
         nextLetra: 'P',
         significado: 'Oceanográfico',
+        estilo: 'estilo-basico',
+        activa: true,
         descripcion: 'Perteneciente o relativo a la oceanografía'
       },
       {
@@ -202,6 +242,8 @@ export default {
         letra: 'P',
         nextLetra: 'Q',
         significado: 'Presente',
+        estilo: 'estilo-basico',
+        activa: true,
         descripcion:
           'Obsequio, regalo que alguien da a otra persona en señal de reconocimiento o de afecto.'
       },
@@ -210,6 +252,8 @@ export default {
         letra: 'Q',
         nextLetra: 'R',
         significado: 'Quisquilloso',
+        estilo: 'estilo-basico',
+        activa: true,
         descripcion:
           'Que se ofende fácilmente por cosas insignificantes a las que da mayor valor o importancia de la que merecen.'
       },
@@ -218,6 +262,8 @@ export default {
         letra: 'R',
         nextLetra: 'S',
         significado: 'Repartir',
+        estilo: 'estilo-basico',
+        activa: true,
         descripcion:
           'Entregar a personas distintas lo que han encargado o deben recibir'
       },
@@ -226,6 +272,8 @@ export default {
         letra: 'S',
         nextLetra: 'T',
         significado: 'Subarriendo',
+        estilo: 'estilo-basico',
+        activa: true,
         descripcion: 'Acción y efecto de subarrendar'
       },
       {
@@ -233,6 +281,8 @@ export default {
         letra: 'T',
         nextLetra: 'U',
         significado: 'Trifloro',
+        estilo: 'estilo-basico',
+        activa: true,
         descripcion: 'Que tiene tres flores'
       },
       {
@@ -240,6 +290,8 @@ export default {
         letra: 'U',
         nextLetra: 'V',
         significado: 'Ukelele',
+        estilo: 'estilo-basico',
+        activa: true,
         descripcion:
           'Instrumento musical de cuerdas similar a la guitarra pero de menor tamaño.'
       },
@@ -248,6 +300,8 @@ export default {
         letra: 'V',
         nextLetra: 'W',
         significado: 'Volante',
+        estilo: 'estilo-basico',
+        activa: true,
         descripcion:
           'Hoja impresa, de carácter político o publicitario, que se reparte en lugares públicos.'
       },
@@ -256,6 +310,8 @@ export default {
         letra: 'W',
         nextLetra: 'X',
         significado: 'Web',
+        estilo: 'estilo-basico',
+        activa: true,
         descripcion:
           'Conjunto de información que se encuentra en una dirección determinada de internet.'
       },
@@ -264,6 +320,8 @@ export default {
         letra: 'X',
         nextLetra: 'Y',
         significado: 'Xilófono',
+        estilo: 'estilo-basico',
+        activa: true,
         descripcion:
           'Instrumento musical de percusión compuesto de láminas de madera o metal.'
       },
@@ -272,6 +330,8 @@ export default {
         letra: 'Y',
         nextLetra: 'Z',
         significado: 'Yo',
+        estilo: 'estilo-basico',
+        activa: true,
         descripcion:
           'Pronombre con el que la persona que habla o escribe se refiere a sí misma; es la forma del pronombre personal de primera persona del singular cuando ejerce la función de sujeto, tanto en masculino como en femenino.'
       },
@@ -280,6 +340,8 @@ export default {
         letra: 'Z',
         nextLetra: 'A',
         significado: 'Zapallo',
+        estilo: 'estilo-basico',
+        activa: true,
         descripcion:
           'Planta cucurbitácea de tallos rastreros y provistos de zarcillos, hojas grandes, anchas y lobuladas, flores amarillas y fruto comestible, con multitud de semillas aplanadas; existen varias especies.'
       }
@@ -291,50 +353,54 @@ export default {
       if (this.$refs.form.validate()) {
         console.log(this.termino)
         console.log(this.palabraseleccionada)
-        if (
-          this.palabraseleccionada.significado.toLowerCase() ==
-          this.termino.toLowerCase()
-        ) {
+        if (this.palabraseleccionada.activa) {
+          if (
+            this.palabraseleccionada.significado.toLowerCase() ==
+            this.termino.toLowerCase()
+          ) {
+            this.correctas++
+            //Cuando la palabra es igual
+            //Debe pasar a la siguiente letra
+            console.log(this.palabraseleccionada.letra)
+            this.palabraseleccionada.estilo = 'estilo-success'
 
+            this.palabras.forEach(ele => {
+              if (ele.letra == this.palabraseleccionada.letra) {
+                ele.estilo = 'estilo-success'
+                ele.activa = false
+              }
+            })
 
+            this.palabraseleccionada = this.palabras.filter(
+              ele => ele.letra == this.palabraseleccionada.nextLetra
+            )[0]
 
-          this['estilo1'] = {
-            border: 'solid blue'
-          }
+            this.item++
+            this.termino = ''
+            ///// Aqui deberia intentar cambiar el color
+            if (this.item > 26) {
+              this.item = 0
+            }
+          } else {
+            this.palabras.forEach(ele => {
+              if (ele.letra == this.palabraseleccionada.letra) {
+                ele.estilo = 'estilo-error'
+              }
+            })
 
-
-
-
-
-          
-          //Cuando la palabra es igual
-          //Debe pasar a la siguiente letra
-          console.log(this.palabraseleccionada.letra)
-          this.palabraseleccionada = this.palabras.filter(
-            ele => ele.letra == this.palabraseleccionada.nextLetra
-          )[0]
-
-        
-
-          
-          this.item++
-          this.termino = ''
-          ///// Aqui deberia intentar cambiar el color
-          if (this.item > 26) {
-            this.item = 0
-          }
-        } /*else {
-
-         /* this.item++
+            /* this.item++
           this.termino = ''
            this['estilo1']={
             border:'solid red '
           }
           if (this.item > 26) {
             this.item = 0
+          }*/
           }
-
-        } */
+        } else {
+          alert('Ya fue resuelta')
+          this.item++
+        }
       }
     },
     irHome () {
@@ -343,7 +409,8 @@ export default {
       this.$router.push('/')
     },
     seleccionado (palabra) {
-      this.palabraseleccionada == palabra
+      console.log(palabra)
+      this.palabraseleccionada = palabra
     },
     saltar () {
       //poner en color amarillo
@@ -359,6 +426,9 @@ export default {
       )[0]
     }
   },
+  async created () {
+    this.palabras = await palabras
+  },
   mounted () {
     this.palabraseleccionada = this.palabras.filter(el => {
       return el.id.toLowerCase() == 1
@@ -366,3 +436,22 @@ export default {
   }
 }
 </script>
+<style scoped>
+.v-list-item.v-list-item--link.theme--light.estilo-basico {
+  color: blue !important;
+}
+.v-list-item.v-item--active.v-list-item--active.v-list-item--link.theme--light.estilo-basico {
+  color: blue !important;
+}
+
+.theme--light.v-list-item:not(.v-list-item--active):not(.v-list-item--disabled).estilo-success {
+  color: green !important;
+}
+
+.theme--light.v-list-item:not(.v-list-item--active):not(.v-list-item--disabled).estilo-error {
+  color: red !important;
+}
+.v-list-item.v-item--active.v-list-item--active.v-list-item--link.theme--light.estilo-error {
+  color: red !important;
+}
+</style>
