@@ -52,7 +52,7 @@
             Aceptar
           </v-btn>
 
-          <v-btn color="error" class="mr-4" @click="saltar">
+          <v-btn color="warning" class="mr-4" @click="saltar">
             Siguiente
           </v-btn>
         </v-form>
@@ -388,10 +388,8 @@ export default {
             })
 
             /* this.item++
-          this.termino = ''
-           this['estilo1']={
-            border:'solid red '
-          }
+          //this.termino = ''
+      
           if (this.item > 26) {
             this.item = 0
           }*/
