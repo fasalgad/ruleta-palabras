@@ -67,12 +67,18 @@
     <v-btn @click="irHome" color="blue">
       Volver al inicio
     </v-btn>
+
+
+    
   </v-container>
 </template>
 
 <script>
+
 export default {
   name: 'Ingreso',
+
+
   data: () => ({
     item: 0, //posición en que inicia la lista
     valid: true,
@@ -389,7 +395,7 @@ export default {
 
             /* this.item++
           //this.termino = ''
-      
+
           if (this.item > 26) {
             this.item = 0
           }*/
