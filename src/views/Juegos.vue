@@ -1,7 +1,6 @@
 <template>
-  <v-container>
-    <Carrusel /><br />
-
+  <div>
+    <Carrusel />
     <v-row>
       <v-col cols="12" sm="6" align="center">
         <v-layout>
@@ -13,26 +12,10 @@
         </v-layout>
       </v-col>
 
-      <v-col cols="12" sm="6" align="center">
-        <v-layout>
-          <v-flex>
-            <v-btn dark color="blue" @click="irFormulario" disabled="true">
-              Mirar más
-            </v-btn>
-          </v-flex>
-        </v-layout>
-      </v-col>
+  
     </v-row>
-
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem iste
-      consectetur odit nulla! Necessitatibus laudantium voluptas, commodi cum
-      repellendus molestias tenetur deserunt? Non molestiae nobis repellat error
-      fugiat sequi aspernatur.
-    </p>
-  </v-container>
+  </div>
 </template>
-
 <script>
 // @ is an alias to /src
 /*import HelloWorld from '@/components/HelloWorld.vue'
@@ -48,12 +31,8 @@ export default {
       console.log('this.$route', this.$route)
       console.log('this.$router', this.$router)
       this.$router.push('Ruleta')
-    },
-     /* irFormulario () {
-      console.log('this.$route', this.$route)
-      console.log('this.$router', this.$router)
-      this.$router.push('Form')
-    }*/
+    }
+
   }
 }
 </script>

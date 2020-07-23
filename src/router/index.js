@@ -33,8 +33,7 @@ Vue.use(VueRouter)
     path: '/temporizador',
     name: 'temporizador',
     component: () => import(/* webpackChunkName: "about" */ '../views/Temporizador.vue')
-  },
-
+  }
 ]
 
 const router = new VueRouter({
