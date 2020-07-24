@@ -28,11 +28,6 @@ Vue.use(VueRouter)
     path: '/',
     name: 'juegos',
     component: () => import(/* webpackChunkName: "about" */ '../views/Juegos.vue')
-  },
-  {
-    path: '/temporizador',
-    name: 'temporizador',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Temporizador.vue')
   }
 ]
 

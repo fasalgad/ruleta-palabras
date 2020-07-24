@@ -11,8 +11,6 @@
           </v-flex>
         </v-layout>
       </v-col>
-
-  
     </v-row>
   </div>
 </template>
@@ -32,7 +30,6 @@ export default {
       console.log('this.$router', this.$router)
       this.$router.push('Ruleta')
     }
-
   }
 }
 </script>

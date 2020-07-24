@@ -63,21 +63,21 @@
         </v-row>
       </v-col>
     </v-row>
-
+<Temporizador/>
     <v-btn @click="irHome" color="blue">
       Volver al inicio
     </v-btn>
-
-
-    
+    <Hijo/>
   </v-container>
 </template>
 
 <script>
-
+import Hijo from '@/components/Hijo.vue'
 export default {
   name: 'Ingreso',
-
+  components:{
+Hijo
+  },
 
   data: () => ({
     item: 0, //posición en que inicia la lista
