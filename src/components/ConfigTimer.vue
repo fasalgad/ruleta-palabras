@@ -18,6 +18,7 @@
             id="min"
             min="0"
             max="5"
+            required
           />
         </v-col>
         <v-col>
@@ -28,12 +29,13 @@
             id="sec"
             max="59"
             min="0"
+            required
           />
         </v-col>
         </v-row>
         <v-row>
         <v-col>
-          <v-btn @click="enviartiempo" small class="ma-2" tile color="indigo">Establecer Tiempo</v-btn>
+          <v-btn @click="enviartiempo" small class="ma-2" tile color="primary">Tiempo</v-btn>
         </v-col>
         </v-row>
     </form>   
@@ -47,7 +49,7 @@ export default {
     return {
       Minutos: 0,
       Segundos: 0,
-    };
+    }
   },
   methods: {
     enviartiempo() {

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Ingreso />
+    
     <v-card
       max-width="600"
       max-height="300"
@@ -8,7 +8,7 @@
       justify="center"
       align="center"
     >
-      <v-card-title class="headline"> Ponte a prueba con tiempo</v-card-title>
+      <v-card-title class="Center">Vamos a jugar!!!!!</v-card-title>
       <timer-setup v-if="!time" @set-time="setTime"></timer-setup>
       <div v-else>
         <timer :time="prettyTime"></timer>
@@ -22,12 +22,14 @@
             >Start</v-btn
           >
           <v-btn class="ma-2" tile color="indigo" v-if="isRunning" @click="stop"
-            >Stop</v-btn
+            >Alto</v-btn
           >
-          <v-btn class="ma-2" tile color="indigo" @click="reset">Reset</v-btn>
+          <v-btn class="ma-2" tile color="indigo" @click="reset">Reiniciar</v-btn>
         </div>
       </div>
     </v-card>
+
+    <Ingreso />
   </div>
 </template>
 
@@ -93,7 +95,7 @@ export default {
       this.Minutos = 0
     },
     setTime (payload) {
-      this.time = payload.Minutos * 60 + payload.Segundos
+      this.time = (payload.Minutos * 60 + payload.Segundos)
     }
   }
 }

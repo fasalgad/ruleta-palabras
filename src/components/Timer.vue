@@ -10,16 +10,16 @@ export default {
 
   filters: {
     prettify: function(value) {
-      let data = value.split(":");
+      let data = value.split(':');
       let Minutos = data[0];
       let Segundos = data[1];
       if (Minutos < 10) {
-        Minutos = "0" + Minutos;
+        Minutos = 0 + Minutos;
       }
       if (Segundos < 10) {
-        Segundos = "0" + Segundos;
+        Segundos = 0 + Segundos;
       }
-      return Minutos + ":" + Segundos;
+      return Minutos + ':' + Segundos
     },
   }
 }
