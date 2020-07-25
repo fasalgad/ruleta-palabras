@@ -6,6 +6,7 @@
 
 <script>
 export default {
+  name:'Timer',
   props: ["time"],
 
   filters: {
@@ -21,6 +22,7 @@ export default {
       }
       return Minutos + ':' + Segundos
     },
+    
   }
 }
 </script>

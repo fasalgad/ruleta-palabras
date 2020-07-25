@@ -5,7 +5,7 @@
       <v-col cols="12" sm="6" align="center">
         <v-layout>
           <v-flex>
-            <v-btn @click="irRuleta" dark color="green">
+            <v-btn @click="irRuleta" color="green">
               Jugar Ruleta Palabra
             </v-btn>
           </v-flex>

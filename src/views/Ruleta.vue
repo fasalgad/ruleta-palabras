@@ -7,8 +7,8 @@
       class="mx-auto"
       justify="center"
       align="center"
-    >
-      <v-card-title class="Center">Vamos a jugar!!!!!</v-card-title>
+    ><br>
+      <H1>Bienvenido</H1>
       <timer-setup v-if="!time" @set-time="setTime"></timer-setup>
       <div v-else>
         <timer :time="prettyTime"></timer>
