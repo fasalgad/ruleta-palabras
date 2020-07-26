@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-btn @click="enviartiempo" small class="ma-2" tile color="primary"
+    <v-btn @click="play" small class="ma-2" tile color="primary"
       >Juguemos!!!</v-btn
     >
   </v-container>
@@ -11,16 +11,18 @@ export default {
   name: 'ConfigTimer',
   data () {
     return {
-      Minutos: 3,
+      Minutos: 4,
       Segundos: 55
     }
   },
   methods: {
-    enviartiempo () {
+    play () {
       this.$emit('set-time', {
         Minutos: this.Minutos,
         Segundos: this.Segundos
       })
+      
+      
     }
   }
 }

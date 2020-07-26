@@ -21,6 +21,7 @@
 import Carrusel from '@/components/Carrusel.vue'
 
 export default {
+  name:'Juegos',
   components: {
     Carrusel
   },
@@ -29,7 +30,10 @@ export default {
       console.log('this.$route', this.$route)
       console.log('this.$router', this.$router)
       this.$router.push('Ruleta')
+      
     }
+    
   }
+
 }
 </script>
