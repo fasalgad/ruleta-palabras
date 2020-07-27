@@ -1,6 +1,5 @@
 <template>
   <v-container>
-
     <v-row>
       <v-col>
         <v-card class="mx-auto" max-width="1080" tile>
@@ -58,13 +57,23 @@
           </v-btn>
         </v-form>
         <v-row>
+
+          <v-col>
+            <label>El término correcto era: {{ actual }}</label>
+          </v-col>
+
           <v-col>
             <label>Correctas: {{ correctas }}</label>
           </v-col>
+
+          <v-col>
+            <label>Malas: {{ malas }}</label>
+          </v-col>
+          
         </v-row>
       </v-col>
     </v-row>
-  
+
     <v-btn @click="irHome" color="blue">
       Volver al inicio
     </v-btn>
@@ -72,19 +81,19 @@
 </template>
 
 <script>
-
 export default {
   name: 'Ingreso',
-  
+
   data: () => ({
     item: 0, //posición en que inicia la lista
     valid: true,
     termino: '',
     correctas: 0,
+    malas: 0,
+    actual: '',
     estilo1: { border: '', 'font-size': '15px' },
     palabraseleccionada: '',
     lazy: true,
-    
 
     palRules: [
       v => !!v || 'Palabra es requerida',
@@ -351,7 +360,6 @@ export default {
     ]
   }),
 
-
   methods: {
     validate () {
       if (this.$refs.form.validate()) {
@@ -363,6 +371,7 @@ export default {
             this.termino.toLowerCase()
           ) {
             this.correctas++
+            this.actual = this.palabraseleccionada.significado
             //Cuando la palabra es igual
             //Debe pasar a la siguiente letra
             console.log(this.palabraseleccionada.letra)
@@ -391,13 +400,13 @@ export default {
                 ele.estilo = 'estilo-error'
               }
             })
+            this.malas++
+            this.actual = this.palabraseleccionada.significado
+            //this.item++
 
-            /* this.item++
-          //this.termino = ''
-
-          if (this.item > 26) {
-            this.item = 0
-          }*/
+            if (this.item > 26) {
+              this.item = 0
+            }
           }
         } else {
           alert('Ya fue resuelta')
