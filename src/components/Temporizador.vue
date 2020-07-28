@@ -31,7 +31,7 @@
         </div>
       </div>
     </v-card>
-    <Ingreso />
+
   </div>
 </template>
 

@@ -57,7 +57,6 @@
           </v-btn>
         </v-form>
         <v-row>
-
           <v-col>
             <label>El término correcto era: {{ actual }}</label>
           </v-col>
@@ -69,7 +68,6 @@
           <v-col>
             <label>Malas: {{ malas }}</label>
           </v-col>
-          
         </v-row>
       </v-col>
     </v-row>
@@ -398,11 +396,13 @@ export default {
             this.palabras.forEach(ele => {
               if (ele.letra == this.palabraseleccionada.letra) {
                 ele.estilo = 'estilo-error'
+               
               }
             })
+           // this.item++
             this.malas++
             this.actual = this.palabraseleccionada.significado
-            //this.item++
+            this.termino = ''
 
             if (this.item > 26) {
               this.item = 0
@@ -424,6 +424,12 @@ export default {
       this.palabraseleccionada = palabra
     },
     saltar () {
+      this.palabras.forEach(ele => {
+        if (ele.letra == this.palabraseleccionada.letra) {
+          ele.estilo = 'estilo-saltada'
+          
+        }
+      })
       //poner en color amarillo
       this.item++
       if (this.item > 26) {
@@ -462,5 +468,12 @@ export default {
 }
 .v-list-item.v-item--active.v-list-item--active.v-list-item--link.theme--light.estilo-error {
   color: red !important;
+}
+
+.theme--light.v-list-item:not(.v-list-item--active):not(.v-list-item--disabled).estilo-saltada {
+  color: rgb(255, 136, 0) !important;
+}
+.v-list-item.v-item--active.v-list-item--active.v-list-item--link.theme--light.estilo-saltada {
+  color:  rgb(255, 136, 0) !important;
 }
 </style>

@@ -29,6 +29,8 @@ Vue.use(VueRouter)
     name: 'juegos',
     component: () => import(/* webpackChunkName: "about" */ '../views/Juegos.vue')
   }
+
+
 ]
 
 const router = new VueRouter({
