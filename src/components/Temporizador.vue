@@ -2,16 +2,16 @@
   <div>
     <br />
 
-    <v-card
+<v-card
       max-width="600"
       max-height="300"
       class="mx-auto"
       justify="center"
       align="center"
     >
-      <H1>Bienvenido</H1>
-      <timer-setup @set-time="setTime"></timer-setup>
-      <div>
+      <h1>Vamos a poner tiempo</h1>
+      <timer-setup v-if="!time" @set-time="setTime"></timer-setup>
+      <div v-else>
         <timer :time="prettyTime"></timer>
         <div>
           <v-btn
@@ -20,14 +20,13 @@
             color="indigo"
             v-if="!isRunning"
             @click="start"
-            >Iniciar</v-btn
+            >Start</v-btn
           >
           <v-btn class="ma-2" tile color="indigo" v-if="isRunning" @click="stop"
-            >Pausa</v-btn
+            >Stop</v-btn
           >
-          <v-btn class="ma-2" tile color="indigo" @click="reset"
-            >Reiniciar</v-btn
-          >
+          <v-btn class="ma-2" tile color="indigo" @click="reset">Reset</v-btn>
+          <v-btn class="ma-2" tile color="indigo" @click="finjuego">Abandonar</v-btn>
         </div>
       </div>
     </v-card>
@@ -36,14 +35,13 @@
 </template>
 
 <script>
-import Ingreso from '@/components/Ingreso.vue'
 import ConfigTimer from '@/components/ConfigTimer.vue'
 import Timer from '@/components/Timer.vue'
 
 export default {
   name: 'Temporizador',
   components: {
-    Ingreso,
+   
     'timer-setup': ConfigTimer,
     timer: Timer
   },
@@ -67,6 +65,11 @@ export default {
   },
 
   methods: {
+        finjuego() {
+  console.log('this.$route', this.$route)
+      console.log('this.$router', this.$router)
+      this.$router.push('/')
+    },
     start () {
       this.isRunning = true
       if (!this.timer) {
@@ -92,7 +95,7 @@ export default {
       this.Minutos = 0
     },
     setTime (payload) {
-      this.time = payload.Minutos * 60 + payload.Segundos
+      this.time = parseInt(payload.Minutos) * 60 + parseInt(payload.Segundos)
     }
   }
 }

@@ -13,9 +13,10 @@
         </v-card-title>
 
         <v-card-text>
-         
-         SDSDSDSSDSDSDS
-         
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero ipsam
+          perferendis aliquid quaerat possimus hic aliquam et cum consectetur
+          dolor! Qui a unde, ullam quo dignissimos iusto quisquam? Blanditiis,
+          placeat?
         </v-card-text>
 
         <v-divider></v-divider>
