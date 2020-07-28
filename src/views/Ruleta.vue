@@ -2,8 +2,8 @@
   <div>
     <br />
     <Temporizador />
-    <Ingreso />
-    <Resultados />
+    <Ingreso :palabras="palabras" />
+    <Resultados :result="palabras" />
   </div>
 </template>
 
@@ -17,6 +17,268 @@ export default {
     Ingreso,
     Temporizador,
     Resultados
-  }
+  },
+  data(){
+    return {
+    palabras: [
+      {
+        id: '1',
+        letra: 'A',
+        nextLetra: 'B',
+        significado: 'Analítico',
+        estilo: 'estilo-basico',
+        activa: true,
+        descripcion: 'Perteneciente o relativo al análisis.'
+      },
+      {
+        id: '2',
+        letra: 'B',
+        nextLetra: 'C',
+        significado: 'Bellotero',
+        estilo: 'estilo-basico',
+        activa: true,
+        descripcion: 'Persona que recolecta o vende bellotas.'
+      },
+      {
+        id: '3',
+        letra: 'C',
+        nextLetra: 'D',
+        significado: 'Clave',
+        estilo: 'estilo-basico',
+        activa: true,
+        descripcion:
+          'Código de signos convencionales y cifrados que se emplea para escribir y leer mensajes secretos para otras personas.'
+      },
+      {
+        id: '4',
+        letra: 'D',
+        nextLetra: 'E',
+        significado: 'Desclavar',
+        estilo: 'estilo-basico',
+        activa: true,
+        descripcion: 'Arrancar o quitar un clavo'
+      },
+      {
+        id: '5',
+        letra: 'E',
+        nextLetra: 'F',
+        significado: 'Edificable',
+        estilo: 'estilo-basico',
+        activa: true,
+        descripcion: 'Dicho de un terreno: propio para edificar'
+      },
+      {
+        id: '6',
+        letra: 'F',
+        nextLetra: 'G',
+        significado: 'Forma',
+        estilo: 'estilo-basico',
+        activa: true,
+        descripcion: 'Modo o manera en que se hace o en que ocurre algo'
+      },
+      {
+        id: '7',
+        letra: 'G',
+        nextLetra: 'H',
+        significado: 'Gitanismo',
+        estilo: 'estilo-basico',
+        activa: true,
+        descripcion:
+          'Vocablo o giro propio de la lengua que hablan los gitanos.'
+      },
+      {
+        id: '8',
+        letra: 'H',
+        nextLetra: 'I',
+        significado: 'Hondero',
+        estilo: 'estilo-basico',
+        activa: true,
+        descripcion: 'Soldado que usaba honda en la guerra.  '
+      },
+      {
+        id: '9',
+        letra: 'I',
+        nextLetra: 'J',
+        significado: 'Inadvertencia',
+        estilo: 'estilo-basico',
+        activa: true,
+        descripcion: 'Falta de advertencia.'
+      },
+      {
+        id: '10',
+        letra: 'J',
+        nextLetra: 'K',
+        significado: 'justificadamente',
+        estilo: 'estilo-basico',
+        activa: true,
+        descripcion: 'De manera justificada'
+      },
+      {
+        id: '11',
+        letra: 'K',
+        nextLetra: 'L',
+        significado: 'Kilogramo',
+        estilo: 'estilo-basico',
+        activa: true,
+        descripcion:
+          'Unidad de masa del Sistema Internacional, de símbolo kg, que equivale a la masa del prototipo de platino iridiado que se encuentra en la Oficina Internacional de Pesas y Medidas de París.'
+      },
+      {
+        id: '12',
+        letra: 'L',
+        nextLetra: 'M',
+        significado: 'Lucha',
+        estilo: 'estilo-basico',
+        activa: true,
+        descripcion:
+          'Esfuerzo que se hace para resistir a una fuerza hostil o a una tentación, para subsistir o para alcanzar algún objetivo'
+      },
+      {
+        id: '13',
+        letra: 'M',
+        nextLetra: 'N',
+        significado: 'Marcar',
+        estilo: 'estilo-basico',
+        activa: true,
+        descripcion:
+          'Pulsar en un teléfono los números de otro para comunicar con él.'
+      },
+      {
+        id: '14',
+        letra: 'N',
+        nextLetra: 'Ñ',
+        significado: 'Nivelado',
+        estilo: 'estilo-basico',
+        activa: true,
+        descripcion: 'Que presenta desnivel.'
+      },
+      {
+        id: '15',
+        letra: 'Ñ',
+        nextLetra: 'O',
+        significado: 'Ñoñería',
+        estilo: 'estilo-basico',
+        activa: true,
+        descripcion: 'Algo soso o con poca gracia'
+      },
+      {
+        id: '16',
+        letra: 'O',
+        nextLetra: 'P',
+        significado: 'Oceanográfico',
+        estilo: 'estilo-basico',
+        activa: true,
+        descripcion: 'Perteneciente o relativo a la oceanografía'
+      },
+      {
+        id: '17',
+        letra: 'P',
+        nextLetra: 'Q',
+        significado: 'Presente',
+        estilo: 'estilo-basico',
+        activa: true,
+        descripcion:
+          'Obsequio, regalo que alguien da a otra persona en señal de reconocimiento o de afecto.'
+      },
+      {
+        id: '18',
+        letra: 'Q',
+        nextLetra: 'R',
+        significado: 'Quisquilloso',
+        estilo: 'estilo-basico',
+        activa: true,
+        descripcion:
+          'Que se ofende fácilmente por cosas insignificantes a las que da mayor valor o importancia de la que merecen.'
+      },
+      {
+        id: '19',
+        letra: 'R',
+        nextLetra: 'S',
+        significado: 'Repartir',
+        estilo: 'estilo-basico',
+        activa: true,
+        descripcion:
+          'Entregar a personas distintas lo que han encargado o deben recibir'
+      },
+      {
+        id: '20',
+        letra: 'S',
+        nextLetra: 'T',
+        significado: 'Subarriendo',
+        estilo: 'estilo-basico',
+        activa: true,
+        descripcion: 'Acción y efecto de subarrendar'
+      },
+      {
+        id: '21',
+        letra: 'T',
+        nextLetra: 'U',
+        significado: 'Trifloro',
+        estilo: 'estilo-basico',
+        activa: true,
+        descripcion: 'Que tiene tres flores'
+      },
+      {
+        id: '22',
+        letra: 'U',
+        nextLetra: 'V',
+        significado: 'Ukelele',
+        estilo: 'estilo-basico',
+        activa: true,
+        descripcion:
+          'Instrumento musical de cuerdas similar a la guitarra pero de menor tamaño.'
+      },
+      {
+        id: '23',
+        letra: 'V',
+        nextLetra: 'W',
+        significado: 'Volante',
+        estilo: 'estilo-basico',
+        activa: true,
+        descripcion:
+          'Hoja impresa, de carácter político o publicitario, que se reparte en lugares públicos.'
+      },
+      {
+        id: '24',
+        letra: 'W',
+        nextLetra: 'X',
+        significado: 'Web',
+        estilo: 'estilo-basico',
+        activa: true,
+        descripcion:
+          'Conjunto de información que se encuentra en una dirección determinada de internet.'
+      },
+      {
+        id: '25',
+        letra: 'X',
+        nextLetra: 'Y',
+        significado: 'Xilófono',
+        estilo: 'estilo-basico',
+        activa: true,
+        descripcion:
+          'Instrumento musical de percusión compuesto de láminas de madera o metal.'
+      },
+      {
+        id: '26',
+        letra: 'Y',
+        nextLetra: 'Z',
+        significado: 'Yo',
+        estilo: 'estilo-basico',
+        activa: true,
+        descripcion:
+          'Pronombre con el que la persona que habla o escribe se refiere a sí misma; es la forma del pronombre personal de primera persona del singular cuando ejerce la función de sujeto, tanto en masculino como en femenino.'
+      },
+      {
+        id: '27',
+        letra: 'Z',
+        nextLetra: 'A',
+        significado: 'Zapallo',
+        estilo: 'estilo-basico',
+        activa: true,
+        descripcion:
+          'Planta cucurbitácea de tallos rastreros y provistos de zarcillos, hojas grandes, anchas y lobuladas, flores amarillas y fruto comestible, con multitud de semillas aplanadas; existen varias especies.'
+      }
+    ]
+  }}
 }
 </script>

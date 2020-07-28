@@ -1,6 +1,6 @@
 <template>
   <div class="text-center">
-    <v-dialog v-model="dialog" width="1000">
+    <v-dialog v-model="(dialog)" width="1000">
       <template v-slot:activator="{ on, attrs }">
         <v-btn color="blue" dark v-bind="attrs" v-on="on">
           LISTA DE RESPUESTAS
@@ -13,10 +13,11 @@
         </v-card-title>
 
         <v-card-text>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero ipsam
-          perferendis aliquid quaerat possimus hic aliquam et cum consectetur
-          dolor! Qui a unde, ullam quo dignissimos iusto quisquam? Blanditiis,
-          placeat?
+          <ul>
+            <li v-for="(ob, i) in result " :key="i">
+              {{ob.id}} - {{ob.significado}}
+            </li>
+          </ul>
         </v-card-text>
 
         <v-divider></v-divider>
@@ -35,6 +36,12 @@
 <script>
 export default {
   name: 'Resultados',
+  props:{
+    result:{
+      type:Array,
+      required:true
+    }
+  },
   data () {
     return {
       dialog: false
