@@ -1,5 +1,7 @@
 <template>
   <v-container>
+    <h1>Bienvenido a lista Palabras</h1>
+    <h5>Establecer Tiempo</h5>
     <form>
       <v-row>
         <v-col>
@@ -18,6 +20,7 @@
             id="min"
             min="0"
             max="5"
+ 
           />
         </v-col>
         <v-col>
@@ -30,41 +33,50 @@
             min="0"
           />
         </v-col>
-        </v-row>
-        <v-row>
+      </v-row>
+      <v-row>
         <v-col>
-          <v-btn @click="enviartiempo" small class="ma-2" tile color="indigo">Establecer Tiempo</v-btn>
+          <v-btn
+            @click="enviartiempo"
+            small
+            class="ma-2"
+            tile
+            color="rgb(0, 255, 38)"
+            >Establecer Tiempo</v-btn
+          >
         </v-col>
         <v-col>
-          <v-btn @click="finjuego" small class="ma-2" tile color="indigo">Abandonar todo</v-btn>
+          <v-btn @click="finjuego" small class="ma-2" tile color="indigo"
+            >Abandonar todo</v-btn
+          >
         </v-col>
-        </v-row>
-    </form>   
-    </v-container>
+      </v-row>
+    </form>
+  </v-container>
 </template>
 
 <script>
 export default {
-   name: 'ConfigTimer',
-  data() {
+  name: 'ConfigTimer',
+  data () {
     return {
       Minutos: 0,
-      Segundos: 0,
-    };
+      Segundos: 0
+    }
   },
   methods: {
-    enviartiempo() {
-      this.$emit("set-time", {
+    enviartiempo () {
+   
+      this.$emit('set-time', {
         Minutos: this.Minutos,
-        Segundos: this.Segundos,
-      });
+        Segundos: this.Segundos
+      })
     },
-       finjuego() {
-  console.log('this.$route', this.$route)
+    finjuego () {
+      console.log('this.$route', this.$route)
       console.log('this.$router', this.$router)
       this.$router.push('/')
     }
-  },
-
+  }
 }
 </script>

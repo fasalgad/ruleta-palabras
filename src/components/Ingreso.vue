@@ -58,7 +58,7 @@
         </v-form>
         <v-row>
           <v-col>
-            <label>El término correcto era: {{ actual }}</label>
+            <label>Término correspondiente: {{ actual }}</label>
           </v-col>
 
           <v-col>
@@ -71,18 +71,18 @@
         </v-row>
       </v-col>
     </v-row>
-
-    <v-btn @click="irHome" color="blue">
-      Volver al inicio
-    </v-btn>
+    <v-row>
+     
+    </v-row>
   </v-container>
 </template>
 
 <script>
 export default {
   name: 'Ingreso',
-  props:{
-    palabras:Array
+  props: {
+    palabras: Array,
+   
   },
   data: () => ({
     item: 0, //posición en que inicia la lista
@@ -98,8 +98,7 @@ export default {
     palRules: [
       v => !!v || 'Palabra es requerida',
       v => (v && v.length > 0) || 'No puede estar vacio'
-    ],
-    
+    ]
   }),
 
   methods: {
@@ -140,10 +139,9 @@ export default {
             this.palabras.forEach(ele => {
               if (ele.letra == this.palabraseleccionada.letra) {
                 ele.estilo = 'estilo-error'
-               
               }
             })
-           // this.item++
+            // this.item++
             this.malas++
             this.actual = this.palabraseleccionada.significado
             this.termino = ''
@@ -158,11 +156,7 @@ export default {
         }
       }
     },
-    irHome () {
-      console.log('this.$route', this.$route)
-      console.log('this.$router', this.$router)
-      this.$router.push('/')
-    },
+
     seleccionado (palabra) {
       console.log(palabra)
       this.palabraseleccionada = palabra
@@ -171,7 +165,6 @@ export default {
       this.palabras.forEach(ele => {
         if (ele.letra == this.palabraseleccionada.letra) {
           ele.estilo = 'estilo-saltada'
-          
         }
       })
       //poner en color amarillo
@@ -218,6 +211,6 @@ export default {
   color: rgb(255, 136, 0) !important;
 }
 .v-list-item.v-item--active.v-list-item--active.v-list-item--link.theme--light.estilo-saltada {
-  color:  rgb(255, 136, 0) !important;
+  color: rgb(255, 136, 0) !important;
 }
 </style>

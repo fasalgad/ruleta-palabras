@@ -1,6 +1,6 @@
 <template>
   <div class="text-center">
-    <v-dialog v-model="(dialog)" width="1000">
+    <v-dialog v-model="(dialog)" width="1080">
       <template v-slot:activator="{ on, attrs }">
         <v-btn color="blue" dark v-bind="attrs" v-on="on">
           LISTA DE RESPUESTAS
@@ -8,16 +8,16 @@
       </template>
 
       <v-card>
-        <v-card-title class="headline grey lighten-2">
+        <v-card-title class="green">
           Resultados Esperados
-        </v-card-title>
 
+        </v-card-title>
         <v-card-text>
-          <ul>
-            <li v-for="(ob, i) in result " :key="i">
-              {{ob.id}} - {{ob.significado}}
+          <ol>
+            <li v-for="(ob, i) in result " :key="i" dark>
+            {{ob.letra}} -> {{ob.significado}} : {{ob.descripcion}}
             </li>
-          </ul>
+          </ol>
         </v-card-text>
 
         <v-divider></v-divider>
