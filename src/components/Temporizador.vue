@@ -1,55 +1,52 @@
 <template>
   <div>
-    <br />
-
+ 
     <v-card
-      max-width="600"
+      max-width="400"
       max-height="300"
-      class="mx-auto"
       justify="center"
       align="center"
     >
+      <v-img
+        src="https://www.elegircarrera.net/blog/wp-content/uploads/2019/05/nuevo-modelo-educativo-2000x1200.jpg"
+        height="110px"
+      ></v-img>
       <timer-setup v-if="!time" @set-time="setTime"></timer-setup>
 
       <div v-else>
-
         <h1>Vamos a jugar</h1>
         <timer :time="prettyTime"></timer>
         <div>
           <v-btn
             class="ma-2"
             tile
-            color="indigo"
+            color="green accent-1"
             v-if="!isRunning"
             @click="start"
-            >Start</v-btn
+            >Iniciar</v-btn
           >
-          <v-btn class="ma-2" tile color="indigo" v-if="isRunning" @click="stop"
-            >Stop</v-btn
+          <v-btn class="ma-2" tile color="#FFC107" v-if="isRunning" @click="stop"
+            >Pausar</v-btn
           >
-          <v-btn class="ma-2" tile color="indigo" @click="reset">Reset</v-btn>
-          <v-btn class="ma-2" tile color="indigo" @click="finjuego"
+          <v-btn class="ma-2" tile color="#FFAB40" @click="reset">Resetear</v-btn>
+          <v-btn class="ma-2" tile color="#FFAB91" @click="finjuego"
             >Abandonar</v-btn
           >
         </div>
       </div>
     </v-card>
-<Ingreso v-if="isRunning"/>
-
   </div>
 </template>
 
 <script>
 import ConfigTimer from '@/components/ConfigTimer.vue'
 import Timer from '@/components/Timer.vue'
-import Ingreso from '@/components/Ingreso.vue'
 
 export default {
   name: 'Temporizador',
   components: {
     'timer-setup': ConfigTimer,
-    timer: Timer,
-    Ingreso
+    timer: Timer
   },
   data () {
     return {

@@ -1,23 +1,26 @@
 <template>
   <v-container>
-    <br />
-    <div>
-      <Temporizador />
-    </div>
+    <v-row>
+      <v-col offset="4">
+        <Temporizador />
+      </v-col>
+    </v-row>
 
-    <div hidden>
+    <v-row>
       <Ingreso :palabras="palabras" />
-    </div>
+    </v-row>
 
-    <div>
-      <Resultados :result="palabras" />
-    </div>
+    <v-row>
+      <v-col>
+        <v-btn @click="irHome" color="blue">
+          Volver al inicio
+        </v-btn>
+      </v-col>
 
-    <div>
-      <v-btn @click="irHome" color="blue">
-        Volver al inicio
-      </v-btn>
-    </div>
+      <v-col>
+        <Resultados :result="palabras" />
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 

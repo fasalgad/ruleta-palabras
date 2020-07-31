@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar app color="blue" dark>
+    <v-app-bar app color="light-green darken-4" dark>
      <cabecera></cabecera>
     </v-app-bar>
 

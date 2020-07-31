@@ -1,8 +1,8 @@
 <template>
   <v-container>
     <v-row>
-      <v-col>
-        <v-card class="mx-auto" max-width="1080" tile>
+      <v-col md="8">
+        <v-card class="mx-auto" max-width="2000" tile>
           <v-list rounded>
             <v-subheader>Lista de Palabras</v-subheader>
             <v-list-item-group v-model="item" color="green">
@@ -56,23 +56,19 @@
             Siguiente
           </v-btn>
         </v-form>
-        <v-row>
-          <v-col>
-            <label>Término correspondiente: {{ actual }}</label>
-          </v-col>
 
-          <v-col>
-            <label>Correctas: {{ correctas }}</label>
-          </v-col>
+        <v-col>
+          <label>Término correspondiente: {{ actual }}</label>
+        </v-col>
 
-          <v-col>
-            <label>Malas: {{ malas }}</label>
-          </v-col>
-        </v-row>
+        <v-col>
+          <label>Correctas: {{ correctas }}</label>
+        </v-col>
+
+        <v-col>
+          <label>Número de errores: {{ malas }}</label>
+        </v-col>
       </v-col>
-    </v-row>
-    <v-row>
-     
     </v-row>
   </v-container>
 </template>
@@ -81,8 +77,7 @@
 export default {
   name: 'Ingreso',
   props: {
-    palabras: Array,
-   
+    palabras: Array
   },
   data: () => ({
     item: 0, //posición en que inicia la lista

@@ -1,18 +1,11 @@
 <template>
   <v-container>
-    <h1>Bienvenido a lista Palabras</h1>
+    <h2>Bienvenido a lista Palabras</h2>
     <h5>Establecer Tiempo</h5>
     <form>
       <v-row>
         <v-col>
           <label for="min">Minutos<br /> </label>
-        </v-col>
-        <v-col>
-          <label for="sec">Segundos<br /> </label>
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col>
           <input
             type="number"
             v-model="Minutos"
@@ -20,12 +13,14 @@
             id="min"
             min="0"
             max="5"
- 
+            placeholder="MINUTOS"
           />
         </v-col>
         <v-col>
+          <label for="sec">Segundos<br /> </label>
           <input
             type="number"
+            placeholder="SEGUNDOS"
             v-model="Segundos"
             name="time_s"
             id="sec"
@@ -34,6 +29,7 @@
           />
         </v-col>
       </v-row>
+      
       <v-row>
         <v-col>
           <v-btn
@@ -41,12 +37,12 @@
             small
             class="ma-2"
             tile
-            color="rgb(0, 255, 38)"
+            color="teal accent-4"
             >Establecer Tiempo</v-btn
           >
         </v-col>
         <v-col>
-          <v-btn @click="finjuego" small class="ma-2" tile color="indigo"
+          <v-btn @click="finjuego" small class="ma-2" tile color="#FFAB91"
             >Abandonar todo</v-btn
           >
         </v-col>
@@ -66,7 +62,6 @@ export default {
   },
   methods: {
     enviartiempo () {
-   
       this.$emit('set-time', {
         Minutos: this.Minutos,
         Segundos: this.Segundos
