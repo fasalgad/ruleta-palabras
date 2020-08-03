@@ -2,12 +2,12 @@
   <v-container>
     <v-row>
       <v-col offset="4">
-        <Temporizador />
+        <Temporizador @cambiarVisibilidad="cambiarVisibilidad" />
       </v-col>
     </v-row>
 
     <v-row>
-      <Ingreso :palabras="palabras" />
+      <Ingreso v-if="aComenzado" :palabras="palabras" />
     </v-row>
 
     <v-row>
@@ -295,7 +295,8 @@ export default {
           descripcion:
             'Planta cucurbitácea de tallos rastreros y provistos de zarcillos, hojas grandes, anchas y lobuladas, flores amarillas y fruto comestible, con multitud de semillas aplanadas; existen varias especies.'
         }
-      ]
+      ],
+      aComenzado:false
     }
   },
   methods: {
@@ -303,6 +304,9 @@ export default {
       console.log('this.$route', this.$route)
       console.log('this.$router', this.$router)
       this.$router.push('/')
+    },
+    cambiarVisibilidad({comenzando}){
+      this.aComenzado=comenzando
     }
   }
 }

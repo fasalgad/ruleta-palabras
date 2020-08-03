@@ -82,6 +82,7 @@ export default {
     },
     start () {
       this.isRunning = true
+      
       if (!this.timer) {
         this.timer = setInterval(() => {
           if (this.time > 0) {
@@ -91,12 +92,15 @@ export default {
             this.reset()
           }
         }, 1000)
+        this.$emit('cambiarVisibilidad',{comenzando:true})
       }
     },
     stop () {
       this.isRunning = false
       clearInterval(this.timer)
       this.timer = null
+      this.$emit('cambiarVisibilidad',{comenzando:false})
+      
     },
     reset () {
       this.stop()
