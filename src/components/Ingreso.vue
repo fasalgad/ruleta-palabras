@@ -67,6 +67,11 @@
 
         <v-col>
           <label>Número de errores: {{ malas }}</label>
+          <span v-if="malas === 3">
+            <v-alert type="error">
+              Superaste el máximo de intentos
+            </v-alert>
+          </span>
         </v-col>
       </v-col>
     </v-row>

@@ -28,7 +28,7 @@
           <v-btn class="ma-2" tile color="#FFC107" v-if="isRunning" @click="stop"
             >Pausar</v-btn
           >
-          <v-btn class="ma-2" tile color="#FFAB40" @click="reset">Resetear</v-btn>
+          <v-btn class="ma-2" tile color="#FFAB40" @click="reset">Reiniciar</v-btn>
           <v-btn class="ma-2" tile color="#FFAB91" @click="finjuego"
             >Abandonar</v-btn
           >
