@@ -21,13 +21,18 @@ Vue.use(VueRouter)
   {
     path: '/ruleta',
     name: 'ruleta',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Ruleta.vue')
+    component: () => import(/* webpackChunkName: "ruleta" */ '../views/Ruleta.vue')
+  },
+  {
+    path: '/admin',
+    name: 'admin',
+    component: () => import(/* webpackChunkName: "admin" */ '../views/Admin.vue')
   },
 
   {
     path: '/',
     name: 'juegos',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Juegos.vue')
+    component: () => import(/* webpackChunkName: "juegos" */ '../views/Juegos.vue')
   }
 
 
