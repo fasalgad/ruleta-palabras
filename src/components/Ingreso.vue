@@ -1,80 +1,94 @@
 <template>
   <v-container>
-    <v-row>
-      <v-col md="8">
-        <v-card class="mx-auto" max-width="2000" tile>
-          <v-list rounded>
-            <v-subheader>Lista de Palabras</v-subheader>
-            <v-list-item-group v-model="item" color="green">
-              <v-list-item
-                v-for="(palabra, index) in palabras"
-                :key="index"
-                :style="estilo1"
-                @click="seleccionado(palabra, index)"
-                :class="palabra.estilo"
-              >
-                {{ palabra.letra }}
-                {{ palabra.descripcion }}
+    <div class="light-blue lighten-5">
+      <v-row>
+        <v-col md="8">
+          <v-card class="mx-auto" max-width="2000" tile>
+            <v-list rounded>
+              <v-subheader>Lista de Palabras</v-subheader>
+              <v-list-item-group v-model="item" color="green">
+                <v-list-item
+                  v-for="(palabra, index) in palabras"
+                  :key="index"
+                  :style="estilo1"
+                  @click="seleccionado(palabra, index)"
+                  :class="palabra.estilo"
+                >
+                  {{ palabra.letra }}
+                  {{ palabra.descripcion }}
 
-                <v-list-item-icon>
-                  <v-icon v-text="item.icon"></v-icon>
-                </v-list-item-icon>
-                <v-list-item-content>
-                  <v-list-item-title v-text="item.text"></v-list-item-title>
-                </v-list-item-content>
-              </v-list-item>
-            </v-list-item-group>
-          </v-list>
-        </v-card>
-      </v-col>
+                  <v-list-item-icon>
+                    <v-icon v-text="item.icon"></v-icon>
+                  </v-list-item-icon>
+                  <v-list-item-content>
+                    <v-list-item-title v-text="item.text"></v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+              </v-list-item-group>
+            </v-list>
+          </v-card>
+        </v-col>
 
-      <v-col>
-        <v-form
-          ref="form"
-          v-model="valid"
-          :lazy-validation="lazy"
-          @submit.prevent="validate"
-        >
-          <v-text-field
-            v-model="termino"
-            :counter="10"
-            :rules="palRules"
-            label="Palabra"
-            required
-          ></v-text-field>
-
-          <v-btn
-            :disabled="!valid"
-            color="success"
-            class="mr-4"
-            @click="validate"
+        <v-col>
+          <v-form
+            ref="form"
+            v-model="valid"
+            :lazy-validation="lazy"
+            @submit.prevent="validate"
           >
-            Aceptar
-          </v-btn>
+            <v-text-field
+              v-model="termino"
+              :counter="10"
+              :rules="palRules"
+              label="Palabra"
+              required
+            ></v-text-field>
 
-          <v-btn color="warning" class="mr-4" @click="saltar">
-            Siguiente
-          </v-btn>
-        </v-form>
+            <v-btn
+              :disabled="!valid"
+              color="success"
+              class="mr-4"
+              @click="validate"
+            >
+              Aceptar
+            </v-btn>
 
-        <v-col>
-          <label>Término correspondiente: {{ actual }}</label>
-        </v-col>
+            <v-btn color="warning" class="mr-4" @click="saltar">
+              Siguiente
+            </v-btn>
+          </v-form>
 
-        <v-col>
-          <label>Correctas: {{ correctas }}</label>
-        </v-col>
-
-        <v-col>
-          <label>Número de errores: {{ malas }}</label>
           <span v-if="malas === 3">
             <v-alert type="error">
-              Superaste el máximo de intentos
+              Superaste el máximo de intentos bye bye!!!
             </v-alert>
           </span>
+
+          <v-col>
+            <v-card>
+              <v-card-title class="headline"
+                >Término correspondiente:</v-card-title
+              >
+              <center>{{ actual }}</center>
+            </v-card>
+
+<br>
+
+            <v-card>
+              <v-card-title class="headline">Número de correctas</v-card-title>
+              <center>{{ correctas }}</center>
+            </v-card>
+
+<br>
+
+            <v-card>
+              <v-card-title class="headline">Número de errores:</v-card-title>
+              <center>{{ malas }}</center>
+            </v-card>
+          </v-col>
         </v-col>
-      </v-col>
-    </v-row>
+      </v-row>
+    </div>
   </v-container>
 </template>
 
@@ -88,6 +102,7 @@ export default {
     item: 0, //posición en que inicia la lista
     valid: true,
     termino: '',
+    ap: 0,
     correctas: 0,
     malas: 0,
     actual: '',
@@ -128,7 +143,7 @@ export default {
             this.palabraseleccionada = this.palabras.filter(
               ele => ele.letra == this.palabraseleccionada.nextLetra
             )[0]
-
+            this.ap++
             this.item++
             this.termino = ''
             ///// Aqui deberia intentar cambiar el color
@@ -142,6 +157,7 @@ export default {
               }
             })
             // this.item++
+            this.ap++
             this.malas++
             this.actual = this.palabraseleccionada.significado
             this.termino = ''

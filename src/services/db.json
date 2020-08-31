@@ -4,19 +4,19 @@
       "id": "1",
       "letra": "A",
       "nextLetra": "B",
-      "significado": "Analíticosssssssssssssssssssss",
+      "significado": "Analítico",
       "estilo": "estilo-basico",
       "activa": true,
-      "descripcion": "Perteneciente o relativo al análisis.ssssssssssssssssssssss"
+      "descripcion": "Perteneciente o relativo al análisis."
     },
     {
       "id": "2",
       "letra": "B",
       "nextLetra": "C",
-      "significado": "Belloteross",
+      "significado": "Bellotero",
       "estilo": "estilo-basico",
       "activa": true,
-      "descripcion": "Persona que recolecta o vende bellotas.ss",
+      "descripcion": "Persona que recolecta o vende bellotas.",
       "data": {
         "id": "1",
         "letra": "A",

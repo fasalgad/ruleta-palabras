@@ -1,26 +1,34 @@
 <template>
   <v-container>
-    <v-row>
-      <v-col offset="4">
-        <Temporizador v-if="palabras.length>0" @cambiarVisibilidad="cambiarVisibilidad" />
-      </v-col>
-    </v-row>
+    <div class="cyan lighten-5">
+      <v-row>
+        <v-col offset="4">
+          <Temporizador
+            v-if="palabras.length > 0"
+            @cambiarVisibilidad="cambiarVisibilidad"
+          />
+        </v-col>
+      </v-row>
+
+      <v-row>
+        <Ingreso
+          v-if="aComenzado && palabras.length > 0"
+          :palabras="palabras"
+        />
+      </v-row>
+    </div>
 
     <v-row>
-      <Ingreso v-if="aComenzado && palabras.length>0" :palabras="palabras" />
-    </v-row>
-
-    <v-row>
-      <v-col v-if="palabras.length>0">
+      <v-col v-if="palabras.length > 0">
         <v-btn @click="irHome" color="blue">
           Volver al inicio
         </v-btn>
       </v-col>
 
       <v-col>
-        <Resultados v-if="palabras.length>0" :result="palabras" />
+        <Resultados v-if="palabras.length > 0" :result="palabras" />
       </v-col>
-      <v-col v-if="palabras.length==0">
+      <v-col v-if="palabras.length == 0">
         <h1>Error al cargar contenido</h1>
         <h3>Favor de intentar de nuevo</h3>
       </v-col>
@@ -41,13 +49,13 @@ export default {
   },
   data () {
     return {
-      palabras:[],
-      aComenzado:false
+      palabras: [],
+      aComenzado: false
     }
   },
-  created(){
-    this.$http.get('/palabras').then(response=>{
-      console.log('$http',response)
+  created () {
+    this.$http.get('/palabras').then(response => {
+      console.log('$http', response)
       this.palabras = response.data
     })
   },
@@ -57,8 +65,8 @@ export default {
       console.log('this.$router', this.$router)
       this.$router.push('/')
     },
-    cambiarVisibilidad({comenzando}){
-      this.aComenzado=comenzando
+    cambiarVisibilidad ({ comenzando }) {
+      this.aComenzado = comenzando
     }
   }
 }
