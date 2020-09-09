@@ -1,12 +1,6 @@
 <template>
   <div>
- 
-    <v-card
-      max-width="400"
-      max-height="300"
-      justify="center"
-      align="center"
-    >
+    <v-card max-width="400" max-height="300" justify="center" align="center">
       <v-img
         src="https://www.elegircarrera.net/blog/wp-content/uploads/2019/05/nuevo-modelo-educativo-2000x1200.jpg"
         height="110px"
@@ -25,10 +19,17 @@
             @click="start"
             >Iniciar</v-btn
           >
-          <v-btn class="ma-2" tile color="#FFC107" v-if="isRunning" @click="stop"
+          <v-btn
+            class="ma-2"
+            tile
+            color="#FFC107"
+            v-if="isRunning"
+            @click="stop"
             >Pausar</v-btn
           >
-          <v-btn class="ma-2" tile color="#FFAB40" @click="reset">Reiniciar</v-btn>
+          <v-btn class="ma-2" tile color="#FFAB40" @click="reset"
+            >Reiniciar</v-btn
+          >
           <v-btn class="ma-2" tile color="#FFAB91" @click="finjuego"
             >Abandonar</v-btn
           >
@@ -82,7 +83,7 @@ export default {
     },
     start () {
       this.isRunning = true
-      
+
       if (!this.timer) {
         this.timer = setInterval(() => {
           if (this.time > 0) {
@@ -92,15 +93,14 @@ export default {
             this.reset()
           }
         }, 1000)
-        this.$emit('cambiarVisibilidad',{comenzando:true})
+        this.$emit('cambiarVisibilidad', { comenzando: true })
       }
     },
     stop () {
       this.isRunning = false
       clearInterval(this.timer)
       this.timer = null
-      this.$emit('cambiarVisibilidad',{comenzando:false})
-      
+      this.$emit('cambiarVisibilidad', { comenzando: false })
     },
     reset () {
       this.stop()

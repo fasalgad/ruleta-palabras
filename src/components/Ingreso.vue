@@ -1,6 +1,8 @@
 <template>
   <v-container>
-     <div class="circle-container">
+    <v-row>
+      <v-col>
+        <div class="circle-container">
           <ul class="circle">
             <li
               v-for="(palabra, index) in palabras"
@@ -13,6 +15,74 @@
             </li>
           </ul>
         </div>
+      </v-col>
+      <span v-if="malas === 3">
+        <v-alert type="error">
+          Superaste el máximo de intentos bye bye!!!
+        </v-alert>
+      </span>
+      <v-col>
+        <v-card>
+          <v-card-title class="headline">Pregunta Aquí</v-card-title>
+          <center></center>
+        </v-card>
+        <v-row>
+          <v-form
+            ref="form"
+            v-model="valid"
+            :lazy-validation="lazy"
+            @submit.prevent="validate"
+          >
+            <v-text-field
+              v-model="termino"
+              :counter="10"
+              :rules="palRules"
+              label="Palabra"
+              required
+            ></v-text-field>
+
+            <v-btn
+              :disabled="!valid"
+              color="success"
+              class="mr-4"
+              @click="validate"
+            >
+              Aceptar
+            </v-btn>
+
+            <v-btn color="warning" class="mr-4" @click="saltar">
+              Siguiente
+            </v-btn>
+          </v-form>
+        </v-row>
+        <br />
+
+        <v-row>
+          <div>
+            <v-card>
+              <v-card-title class="headline"
+                >Término correspondiente:</v-card-title
+              >
+              <center>{{ actual }}</center>
+            </v-card>
+
+            <br />
+
+            <v-card>
+              <v-card-title class="headline">Número de correctas</v-card-title>
+              <center>{{ correctas }}</center>
+            </v-card>
+
+            <br />
+
+            <v-card>
+              <v-card-title class="headline">Número de errores:</v-card-title>
+              <center>{{ malas }}</center>
+            </v-card>
+          </div>
+        </v-row>
+      </v-col>
+    </v-row>
 
     <div class="light-blue lighten-5">
       <v-row>
@@ -41,65 +111,6 @@
               </v-list-item-group>
             </v-list>
           </v-card>
-        </v-col>
-
-        <v-col>
-          <v-form
-            ref="form"
-            v-model="valid"
-            :lazy-validation="lazy"
-            @submit.prevent="validate"
-          >
-            <v-text-field
-              v-model="termino"
-              :counter="10"
-              :rules="palRules"
-              label="Palabra"
-              required
-            ></v-text-field>
-
-            <v-btn
-              :disabled="!valid"
-              color="success"
-              class="mr-4"
-              @click="validate"
-            >
-              Aceptar
-            </v-btn>
-
-            <v-btn color="warning" class="mr-4" @click="saltar">
-              Siguiente
-            </v-btn>
-          </v-form>
-
-          <span v-if="malas === 3">
-            <v-alert type="error">
-              Superaste el máximo de intentos bye bye!!!
-            </v-alert>
-          </span>
-
-          <v-col>
-            <v-card>
-              <v-card-title class="headline"
-                >Término correspondiente:</v-card-title
-              >
-              <center>{{ actual }}</center>
-            </v-card>
-
-            <br />
-
-            <v-card>
-              <v-card-title class="headline">Número de correctas</v-card-title>
-              <center>{{ correctas }}</center>
-            </v-card>
-
-            <br />
-
-            <v-card>
-              <v-card-title class="headline">Número de errores:</v-card-title>
-              <center>{{ malas }}</center>
-            </v-card>
-          </v-col>
         </v-col>
       </v-row>
     </div>
@@ -146,7 +157,7 @@ export default {
             //Debe pasar a la siguiente letra
             console.log(this.palabraseleccionada.letra)
             this.palabraseleccionada.estilo = 'estilo-success'
-            this.item='item--success'
+            this.item = 'item--success'
 
             this.palabras.forEach(ele => {
               if (ele.letra == this.palabraseleccionada.letra) {
@@ -245,11 +256,6 @@ export default {
   color: rgb(255, 136, 0) !important;
 }
 
-.circle-container {
-  padding-top: 2em;
-  width: 100%;
-}
-
 .circle {
   position: relative;
   width: 22em;
@@ -270,79 +276,92 @@ export default {
   margin: -0.625em;
 }
 .circle > *:nth-of-type(1) {
-  transform: rotate(270deg) translate(10.6875em) rotate(-270deg);
+  transform: rotate(275.4deg) translate(10.6875em) rotate(-278.4deg);
 }
 .circle > *:nth-of-type(2) {
-  transform: rotate(284.4deg) translate(10.6875em) rotate(-284.4deg);
+  transform: rotate(292.3deg) translate(10.6875em) rotate(-291.3deg);
 }
 .circle > *:nth-of-type(3) {
-  transform: rotate(298.8deg) translate(10.6875em) rotate(-298.8deg);
+  transform: rotate(305.32deg) translate(10.6875em) rotate(-304.32deg);
 }
 .circle > *:nth-of-type(4) {
-  transform: rotate(313.2deg) translate(10.6875em) rotate(-313.2deg);
+  transform: rotate(318.28deg) translate(10.6875em) rotate(-317.28deg);
 }
 .circle > *:nth-of-type(5) {
-  transform: rotate(327.6deg) translate(10.6875em) rotate(-327.6deg);
+  transform: rotate(330.24deg) translate(10.6875em) rotate(-330.24deg);
 }
 .circle > *:nth-of-type(6) {
-  transform: rotate(342deg) translate(10.6875em) rotate(-342deg);
+  transform: rotate(343.2deg) translate(10.6875em) rotate(-343.2deg);
 }
 .circle > *:nth-of-type(7) {
-  transform: rotate(356.4deg) translate(10.6875em) rotate(-356.4deg);
+  transform: rotate(356.16deg) translate(10.6875em) rotate(-356.16deg);
 }
+
 .circle > *:nth-of-type(8) {
-  transform: rotate(370.8deg) translate(10.6875em) rotate(-370.8deg);
+  transform: rotate(369.12deg) translate(10.6875em) rotate(-369.12deg);
 }
+
 .circle > *:nth-of-type(9) {
-  transform: rotate(385.2deg) translate(10.6875em) rotate(-385.2deg);
+  transform: rotate(382.08deg) translate(10.6875em) rotate(-382.08deg);
 }
+
 .circle > *:nth-of-type(10) {
-  transform: rotate(399.6deg) translate(10.6875em) rotate(-399.6deg);
+  transform: rotate(395.04deg) translate(10.6875em) rotate(-395.04deg);
 }
+
 .circle > *:nth-of-type(11) {
-  transform: rotate(414deg) translate(10.6875em) rotate(-414deg);
+  transform: rotate(408deg) translate(10.6875em) rotate(-408deg);
 }
+
 .circle > *:nth-of-type(12) {
-  transform: rotate(428.4deg) translate(10.6875em) rotate(-428.4deg);
+  transform: rotate(420.96deg) translate(10.6875em) rotate(-420.96deg);
 }
+
 .circle > *:nth-of-type(13) {
-  transform: rotate(442.8deg) translate(10.6875em) rotate(-442.8deg);
+  transform: rotate(433.92deg) translate(10.6875em) rotate(-433.92deg);
 }
+
 .circle > *:nth-of-type(14) {
-  transform: rotate(457.2deg) translate(10.6875em) rotate(-457.2deg);
+  transform: rotate(446.88deg) translate(10.6875em) rotate(-446.88deg);
 }
 .circle > *:nth-of-type(15) {
-  transform: rotate(471.6deg) translate(10.6875em) rotate(-471.6deg);
+  transform: rotate(459.84deg) translate(10.6875em) rotate(-459.84deg);
 }
 .circle > *:nth-of-type(16) {
-  transform: rotate(486deg) translate(10.6875em) rotate(-486deg);
+  transform: rotate(472.8deg) translate(10.6875em) rotate(-472.8deg);
 }
 .circle > *:nth-of-type(17) {
-  transform: rotate(500.4deg) translate(10.6875em) rotate(-500.4deg);
+  transform: rotate(485.76deg) translate(10.6875em) rotate(-485.76deg);
 }
 .circle > *:nth-of-type(18) {
-  transform: rotate(514.8deg) translate(10.6875em) rotate(-514.8deg);
+  transform: rotate(498.72deg) translate(10.6875em) rotate(-498.72deg);
 }
 .circle > *:nth-of-type(19) {
-  transform: rotate(529.2deg) translate(10.6875em) rotate(-529.2deg);
+  transform: rotate(511.68deg) translate(10.6875em) rotate(-511.68deg);
 }
 .circle > *:nth-of-type(20) {
-  transform: rotate(543.6deg) translate(10.6875em) rotate(-543.6deg);
+  transform: rotate(524.54deg) translate(10.6875em) rotate(-524.54deg);
 }
 .circle > *:nth-of-type(21) {
-  transform: rotate(558deg) translate(10.6875em) rotate(-558deg);
+  transform: rotate(537.6deg) translate(10.6875em) rotate(-537.6deg);
 }
 .circle > *:nth-of-type(22) {
-  transform: rotate(572.4deg) translate(10.6875em) rotate(-572.4deg);
+  transform: rotate(550.56deg) translate(10.6875em) rotate(-550.56deg);
 }
 .circle > *:nth-of-type(23) {
-  transform: rotate(586.8deg) translate(10.6875em) rotate(-586.8deg);
+  transform: rotate(563.52deg) translate(10.6875em) rotate(-563.52deg);
 }
 .circle > *:nth-of-type(24) {
-  transform: rotate(601.2deg) translate(10.6875em) rotate(-601.2deg);
+  transform: rotate(576.48deg) translate(10.6875em) rotate(-576.48deg);
 }
 .circle > *:nth-of-type(25) {
-  transform: rotate(615.6deg) translate(10.6875em) rotate(-615.6deg);
+  transform: rotate(589.44deg) translate(10.6875em) rotate(-589.44deg);
+}
+.circle > *:nth-of-type(26) {
+  transform: rotate(602.4deg) translate(10.6875em) rotate(-602.4deg);
+}
+.circle > *:nth-of-type(27) {
+  transform: rotate(619.36deg) translate(10.6875em) rotate(-615.36deg);
 }
 
 .circle .items {
