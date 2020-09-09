@@ -1,5 +1,19 @@
 <template>
   <v-container>
+     <div class="circle-container">
+          <ul class="circle">
+            <li
+              v-for="(palabra, index) in palabras"
+              :key="index"
+              :style="estilo1"
+              @click="seleccionado(palabra, index)"
+              class="items"
+            >
+              {{ palabra.letra }}
+            </li>
+          </ul>
+        </div>
+
     <div class="light-blue lighten-5">
       <v-row>
         <v-col md="8">
@@ -72,14 +86,14 @@
               <center>{{ actual }}</center>
             </v-card>
 
-<br>
+            <br />
 
             <v-card>
               <v-card-title class="headline">Número de correctas</v-card-title>
               <center>{{ correctas }}</center>
             </v-card>
 
-<br>
+            <br />
 
             <v-card>
               <v-card-title class="headline">Número de errores:</v-card-title>
@@ -132,6 +146,7 @@ export default {
             //Debe pasar a la siguiente letra
             console.log(this.palabraseleccionada.letra)
             this.palabraseleccionada.estilo = 'estilo-success'
+            this.item='item--success'
 
             this.palabras.forEach(ele => {
               if (ele.letra == this.palabraseleccionada.letra) {
@@ -228,5 +243,126 @@ export default {
 }
 .v-list-item.v-item--active.v-list-item--active.v-list-item--link.theme--light.estilo-saltada {
   color: rgb(255, 136, 0) !important;
+}
+
+.circle-container {
+  padding-top: 2em;
+  width: 100%;
+}
+
+.circle {
+  position: relative;
+  width: 22em;
+  height: 22em;
+  border-radius: 50%;
+  padding: 0;
+  list-style: none;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.circle > * {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1.25em;
+  height: 1.25em;
+  margin: -0.625em;
+}
+.circle > *:nth-of-type(1) {
+  transform: rotate(270deg) translate(10.6875em) rotate(-270deg);
+}
+.circle > *:nth-of-type(2) {
+  transform: rotate(284.4deg) translate(10.6875em) rotate(-284.4deg);
+}
+.circle > *:nth-of-type(3) {
+  transform: rotate(298.8deg) translate(10.6875em) rotate(-298.8deg);
+}
+.circle > *:nth-of-type(4) {
+  transform: rotate(313.2deg) translate(10.6875em) rotate(-313.2deg);
+}
+.circle > *:nth-of-type(5) {
+  transform: rotate(327.6deg) translate(10.6875em) rotate(-327.6deg);
+}
+.circle > *:nth-of-type(6) {
+  transform: rotate(342deg) translate(10.6875em) rotate(-342deg);
+}
+.circle > *:nth-of-type(7) {
+  transform: rotate(356.4deg) translate(10.6875em) rotate(-356.4deg);
+}
+.circle > *:nth-of-type(8) {
+  transform: rotate(370.8deg) translate(10.6875em) rotate(-370.8deg);
+}
+.circle > *:nth-of-type(9) {
+  transform: rotate(385.2deg) translate(10.6875em) rotate(-385.2deg);
+}
+.circle > *:nth-of-type(10) {
+  transform: rotate(399.6deg) translate(10.6875em) rotate(-399.6deg);
+}
+.circle > *:nth-of-type(11) {
+  transform: rotate(414deg) translate(10.6875em) rotate(-414deg);
+}
+.circle > *:nth-of-type(12) {
+  transform: rotate(428.4deg) translate(10.6875em) rotate(-428.4deg);
+}
+.circle > *:nth-of-type(13) {
+  transform: rotate(442.8deg) translate(10.6875em) rotate(-442.8deg);
+}
+.circle > *:nth-of-type(14) {
+  transform: rotate(457.2deg) translate(10.6875em) rotate(-457.2deg);
+}
+.circle > *:nth-of-type(15) {
+  transform: rotate(471.6deg) translate(10.6875em) rotate(-471.6deg);
+}
+.circle > *:nth-of-type(16) {
+  transform: rotate(486deg) translate(10.6875em) rotate(-486deg);
+}
+.circle > *:nth-of-type(17) {
+  transform: rotate(500.4deg) translate(10.6875em) rotate(-500.4deg);
+}
+.circle > *:nth-of-type(18) {
+  transform: rotate(514.8deg) translate(10.6875em) rotate(-514.8deg);
+}
+.circle > *:nth-of-type(19) {
+  transform: rotate(529.2deg) translate(10.6875em) rotate(-529.2deg);
+}
+.circle > *:nth-of-type(20) {
+  transform: rotate(543.6deg) translate(10.6875em) rotate(-543.6deg);
+}
+.circle > *:nth-of-type(21) {
+  transform: rotate(558deg) translate(10.6875em) rotate(-558deg);
+}
+.circle > *:nth-of-type(22) {
+  transform: rotate(572.4deg) translate(10.6875em) rotate(-572.4deg);
+}
+.circle > *:nth-of-type(23) {
+  transform: rotate(586.8deg) translate(10.6875em) rotate(-586.8deg);
+}
+.circle > *:nth-of-type(24) {
+  transform: rotate(601.2deg) translate(10.6875em) rotate(-601.2deg);
+}
+.circle > *:nth-of-type(25) {
+  transform: rotate(615.6deg) translate(10.6875em) rotate(-615.6deg);
+}
+
+.circle .items {
+  display: block;
+  width: 2.25em;
+  height: 2.25em;
+  transition: all 0.3s ease-in-out;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background-image: radial-gradient(circle, #0074d9, #004b8d);
+  color: #fff;
+  line-height: 2.25em;
+  text-align: center;
+  text-decoration: none;
+  cursor: default;
+}
+.circle .item--success {
+  background-image: radial-gradient(circle, #9ee379, #4caf50);
+}
+.circle .item--failure {
+  background-image: radial-gradient(circle, #b9121b, #8e001c);
 }
 </style>
