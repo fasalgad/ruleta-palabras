@@ -10,12 +10,14 @@
               :style="estilo1"
               @click="seleccionado(palabra, index)"
               class="items"
+              :class="palabra.estilo"
             >
               {{ palabra.letra }}
             </li>
           </ul>
         </div>
       </v-col>
+              
       <span v-if="malas === 3">
         <v-alert type="error">
           Superaste el máximo de intentos bye bye!!!
@@ -23,7 +25,10 @@
       </span>
       <v-col>
         <v-card>
-          <v-card-title class="headline">Pregunta Aquí</v-card-title>
+          <v-card-title class="headline">
+            {{palabraseleccionada.letra}} <br/>
+            {{palabraseleccionada.descripcion}}
+            </v-card-title>
           <center></center>
         </v-card>
         <v-row>
@@ -124,6 +129,7 @@ export default {
     palabras: Array
   },
   data: () => ({
+    posicionLetra:'A',
     item: 0, //posición en que inicia la lista
     valid: true,
     termino: '',
@@ -142,6 +148,7 @@ export default {
   }),
 
   methods: {
+
     validate () {
       if (this.$refs.form.validate()) {
         console.log(this.termino)
@@ -155,13 +162,11 @@ export default {
             this.actual = this.palabraseleccionada.significado
             //Cuando la palabra es igual
             //Debe pasar a la siguiente letra
-            console.log(this.palabraseleccionada.letra)
-            this.palabraseleccionada.estilo = 'estilo-success'
-            this.item = 'item--success'
+            
 
             this.palabras.forEach(ele => {
               if (ele.letra == this.palabraseleccionada.letra) {
-                ele.estilo = 'estilo-success'
+                ele.estilo = 'item--success'
                 ele.activa = false
               }
             })
@@ -179,9 +184,12 @@ export default {
           } else {
             this.palabras.forEach(ele => {
               if (ele.letra == this.palabraseleccionada.letra) {
-                ele.estilo = 'estilo-error'
+                ele.estilo = 'item--failure'
               }
             })
+            this.palabraseleccionada = this.palabras.filter(
+              ele => ele.letra == this.palabraseleccionada.nextLetra
+            )[0]
             // this.item++
             this.ap++
             this.malas++
@@ -206,7 +214,7 @@ export default {
     saltar () {
       this.palabras.forEach(ele => {
         if (ele.letra == this.palabraseleccionada.letra) {
-          ele.estilo = 'estilo-saltada'
+          ele.estilo = 'item--saltada'
         }
       })
       //poner en color amarillo
@@ -383,5 +391,10 @@ export default {
 }
 .circle .item--failure {
   background-image: radial-gradient(circle, #b9121b, #8e001c);
+}
+
+
+.circle .item--saltada{
+  background-image:radial-gradient(circle,yellow,yellowgreen)
 }
 </style>
