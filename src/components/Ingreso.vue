@@ -17,7 +17,7 @@
           </ul>
         </div>
       </v-col>
-              
+
       <span v-if="malas === 3">
         <v-alert type="error">
           Superaste el máximo de intentos bye bye!!!
@@ -25,10 +25,10 @@
       </span>
       <v-col>
         <v-card>
-          <v-card-title class="headline">
-            {{palabraseleccionada.letra}} <br/>
-            {{palabraseleccionada.descripcion}}
-            </v-card-title>
+          <v-card-title class="headline"> Con la letra 
+            {{ palabraseleccionada.letra }} :<br />
+            {{ palabraseleccionada.descripcion }}
+          </v-card-title>
           <center></center>
         </v-card>
         <v-row>
@@ -88,37 +88,6 @@
         </v-row>
       </v-col>
     </v-row>
-
-    <div class="light-blue lighten-5">
-      <v-row>
-        <v-col md="8">
-          <v-card class="mx-auto" max-width="2000" tile>
-            <v-list rounded>
-              <v-subheader>Lista de Palabras</v-subheader>
-              <v-list-item-group v-model="item" color="green">
-                <v-list-item
-                  v-for="(palabra, index) in palabras"
-                  :key="index"
-                  :style="estilo1"
-                  @click="seleccionado(palabra, index)"
-                  :class="palabra.estilo"
-                >
-                  {{ palabra.letra }}
-                  {{ palabra.descripcion }}
-
-                  <v-list-item-icon>
-                    <v-icon v-text="item.icon"></v-icon>
-                  </v-list-item-icon>
-                  <v-list-item-content>
-                    <v-list-item-title v-text="item.text"></v-list-item-title>
-                  </v-list-item-content>
-                </v-list-item>
-              </v-list-item-group>
-            </v-list>
-          </v-card>
-        </v-col>
-      </v-row>
-    </div>
   </v-container>
 </template>
 
@@ -129,7 +98,7 @@ export default {
     palabras: Array
   },
   data: () => ({
-    posicionLetra:'A',
+    posicionLetra: 'A',
     item: 0, //posición en que inicia la lista
     valid: true,
     termino: '',
@@ -148,7 +117,6 @@ export default {
   }),
 
   methods: {
-
     validate () {
       if (this.$refs.form.validate()) {
         console.log(this.termino)
@@ -162,7 +130,6 @@ export default {
             this.actual = this.palabraseleccionada.significado
             //Cuando la palabra es igual
             //Debe pasar a la siguiente letra
-            
 
             this.palabras.forEach(ele => {
               if (ele.letra == this.palabraseleccionada.letra) {
@@ -239,31 +206,6 @@ export default {
 }
 </script>
 <style scoped>
-.v-list-item.v-list-item--link.theme--light.estilo-basico {
-  color: blue !important;
-}
-.v-list-item.v-item--active.v-list-item--active.v-list-item--link.theme--light.estilo-basico {
-  color: blue !important;
-}
-
-.theme--light.v-list-item:not(.v-list-item--active):not(.v-list-item--disabled).estilo-success {
-  color: green !important;
-}
-
-.theme--light.v-list-item:not(.v-list-item--active):not(.v-list-item--disabled).estilo-error {
-  color: red !important;
-}
-.v-list-item.v-item--active.v-list-item--active.v-list-item--link.theme--light.estilo-error {
-  color: red !important;
-}
-
-.theme--light.v-list-item:not(.v-list-item--active):not(.v-list-item--disabled).estilo-saltada {
-  color: rgb(255, 136, 0) !important;
-}
-.v-list-item.v-item--active.v-list-item--active.v-list-item--link.theme--light.estilo-saltada {
-  color: rgb(255, 136, 0) !important;
-}
-
 .circle {
   position: relative;
   width: 22em;
@@ -277,105 +219,105 @@ export default {
 .circle > * {
   display: block;
   position: absolute;
-  top: 50%;
+  top: 65%;
   left: 50%;
   width: 1.25em;
   height: 1.25em;
   margin: -0.625em;
 }
 .circle > *:nth-of-type(1) {
-  transform: rotate(275.4deg) translate(10.6875em) rotate(-278.4deg);
+  transform: rotate(275.4deg) translate(16em) rotate(-278.4deg);
 }
 .circle > *:nth-of-type(2) {
-  transform: rotate(292.3deg) translate(10.6875em) rotate(-291.3deg);
+  transform: rotate(288.65deg) translate(16em) rotate(-291.3deg);
 }
 .circle > *:nth-of-type(3) {
-  transform: rotate(305.32deg) translate(10.6875em) rotate(-304.32deg);
+  transform: rotate(301.9deg) translate(16em) rotate(-304.32deg);
 }
 .circle > *:nth-of-type(4) {
-  transform: rotate(318.28deg) translate(10.6875em) rotate(-317.28deg);
+  transform: rotate(315.15deg) translate(16em) rotate(-317.28deg);
 }
 .circle > *:nth-of-type(5) {
-  transform: rotate(330.24deg) translate(10.6875em) rotate(-330.24deg);
+  transform: rotate(328.4deg) translate(16em) rotate(-330.24deg);
 }
 .circle > *:nth-of-type(6) {
-  transform: rotate(343.2deg) translate(10.6875em) rotate(-343.2deg);
+  transform: rotate(341.65deg) translate(16em) rotate(-343.2deg);
 }
 .circle > *:nth-of-type(7) {
-  transform: rotate(356.16deg) translate(10.6875em) rotate(-356.16deg);
+  transform: rotate(354.9deg) translate(16em) rotate(-356.16deg);
 }
 
 .circle > *:nth-of-type(8) {
-  transform: rotate(369.12deg) translate(10.6875em) rotate(-369.12deg);
+  transform: rotate(368.15deg) translate(16em) rotate(-375.83deg);
 }
 
 .circle > *:nth-of-type(9) {
-  transform: rotate(382.08deg) translate(10.6875em) rotate(-382.08deg);
+  transform: rotate(381.4deg) translate(16em) rotate(-382.08deg);
 }
 
 .circle > *:nth-of-type(10) {
-  transform: rotate(395.04deg) translate(10.6875em) rotate(-395.04deg);
+  transform: rotate(394.65deg) translate(16em) rotate(-395.04deg);
 }
 
 .circle > *:nth-of-type(11) {
-  transform: rotate(408deg) translate(10.6875em) rotate(-408deg);
+  transform: rotate(407.9deg) translate(16em) rotate(-408deg);
 }
 
 .circle > *:nth-of-type(12) {
-  transform: rotate(420.96deg) translate(10.6875em) rotate(-420.96deg);
+  transform: rotate(421.15deg) translate(16em) rotate(-420.96deg);
 }
 
 .circle > *:nth-of-type(13) {
-  transform: rotate(433.92deg) translate(10.6875em) rotate(-433.92deg);
+  transform: rotate(434.4deg) translate(16em) rotate(-433.92deg);
 }
 
 .circle > *:nth-of-type(14) {
-  transform: rotate(446.88deg) translate(10.6875em) rotate(-446.88deg);
+  transform: rotate(447.65deg) translate(16em) rotate(-446.88deg);
 }
 .circle > *:nth-of-type(15) {
-  transform: rotate(459.84deg) translate(10.6875em) rotate(-459.84deg);
+  transform: rotate(460.9deg) translate(16em) rotate(-459.84deg);
 }
 .circle > *:nth-of-type(16) {
-  transform: rotate(472.8deg) translate(10.6875em) rotate(-472.8deg);
+  transform: rotate(474deg) translate(16em) rotate(-472.8deg);
 }
 .circle > *:nth-of-type(17) {
-  transform: rotate(485.76deg) translate(10.6875em) rotate(-485.76deg);
+  transform: rotate(486.6deg) translate(16em) rotate(-485.76deg);
 }
 .circle > *:nth-of-type(18) {
-  transform: rotate(498.72deg) translate(10.6875em) rotate(-498.72deg);
+  transform: rotate(500.5deg) translate(16em) rotate(-498.72deg);
 }
 .circle > *:nth-of-type(19) {
-  transform: rotate(511.68deg) translate(10.6875em) rotate(-511.68deg);
+  transform: rotate(514.4deg) translate(16em) rotate(-511.68deg);
 }
 .circle > *:nth-of-type(20) {
-  transform: rotate(524.54deg) translate(10.6875em) rotate(-524.54deg);
+  transform: rotate(529.3deg) translate(16em) rotate(-524.54deg);
 }
 .circle > *:nth-of-type(21) {
-  transform: rotate(537.6deg) translate(10.6875em) rotate(-537.6deg);
+  transform: rotate(543deg) translate(16em) rotate(-537.6deg);
 }
 .circle > *:nth-of-type(22) {
-  transform: rotate(550.56deg) translate(10.6875em) rotate(-550.56deg);
+  transform: rotate(556deg) translate(16em) rotate(-550.56deg);
 }
 .circle > *:nth-of-type(23) {
-  transform: rotate(563.52deg) translate(10.6875em) rotate(-563.52deg);
+  transform: rotate(569.55deg) translate(16em) rotate(-563.52deg);
 }
 .circle > *:nth-of-type(24) {
-  transform: rotate(576.48deg) translate(10.6875em) rotate(-576.48deg);
+  transform: rotate(582.4deg) translate(16em) rotate(-576.48deg);
 }
 .circle > *:nth-of-type(25) {
-  transform: rotate(589.44deg) translate(10.6875em) rotate(-589.44deg);
+  transform: rotate(595.9deg) translate(16em) rotate(-589.44deg);
 }
 .circle > *:nth-of-type(26) {
-  transform: rotate(602.4deg) translate(10.6875em) rotate(-602.4deg);
+  transform: rotate(609.44deg) translate(16em) rotate(-602.4deg);
 }
 .circle > *:nth-of-type(27) {
-  transform: rotate(619.36deg) translate(10.6875em) rotate(-615.36deg);
+  transform: rotate(622.5deg) translate(16em) rotate(-619.6deg);
 }
 
 .circle .items {
   display: block;
-  width: 2.25em;
-  height: 2.25em;
+  width: 3.5em;
+  height: 3.5em;
   transition: all 0.3s ease-in-out;
   border: 2px solid #fff;
   border-radius: 50%;
@@ -392,9 +334,7 @@ export default {
 .circle .item--failure {
   background-image: radial-gradient(circle, #b9121b, #8e001c);
 }
-
-
-.circle .item--saltada{
-  background-image:radial-gradient(circle,yellow,yellowgreen)
+.circle .item--saltada {
+  background-image: radial-gradient(circle, yellow, yellowgreen);
 }
 </style>
