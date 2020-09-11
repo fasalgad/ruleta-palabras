@@ -97,10 +97,6 @@
       </v-dialog>
     </v-col>
   </v-row>
-
-
-
-
 </template>
 
 <script>
@@ -116,14 +112,14 @@ export default {
     }
   },
   created () {
-   this.loadPalabras()
+    this.loadPalabras()
   },
   methods: {
-      loadPalabras(){
-           this.$http.get('/palabras').then(response => {
-      this.palabras = response.data
-    })
-      },
+    loadPalabras () {
+      this.$http.get('/palabras').then(response => {
+        this.palabras = response.data
+      })
+    },
     detailsChar (palabra) {
       this.dialog = true
       // this.$set(this.someObject, 'b', 2)
@@ -138,12 +134,16 @@ export default {
     },
     validate () {
       if (this.$refs.form.validate()) {
-          this.$http.put(`/palabras/${this.palabraSeleccionada.id}`,{... this.palabraSeleccionada}).then(response=>{
-              alert(`
+        this.$http
+          .put(`/palabras/${this.palabraSeleccionada.id}`, {
+            ...this.palabraSeleccionada
+          })
+          .then(response => {
+            alert(`
               Se modificó la letra ${response.data.letra}
               `)
-              this.viewDetails(response)
-              this.loadPalabras()
+            this.viewDetails(response)
+            this.loadPalabras()
           })
       } else {
         alert('Error')

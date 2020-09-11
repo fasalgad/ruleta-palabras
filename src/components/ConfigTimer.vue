@@ -1,7 +1,9 @@
 <template>
   <v-container>
     <h2>Bienvenido a lista Palabras</h2>
-    <h5>Establecer Tiempo</h5>
+    <v-row>
+      <h5>Establecer Tiempo</h5>
+    </v-row>
     <form>
       <v-row>
         <v-col>
@@ -28,8 +30,12 @@
             min="0"
           />
         </v-col>
+        <v-combobox
+          :items="Opciones"
+          label="Seleccionar cantidad de Palabras"
+        ></v-combobox>
       </v-row>
-      
+
       <v-row>
         <v-col>
           <v-btn
@@ -38,7 +44,7 @@
             class="ma-2"
             tile
             color="teal accent-4"
-            >Establecer Tiempo</v-btn
+            >Establecer</v-btn
           >
         </v-col>
         <v-col>
@@ -57,14 +63,41 @@ export default {
   data () {
     return {
       Minutos: 0,
-      Segundos: 0
+      Segundos: 0,
+      Opciones: [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        18,
+        20,
+        21,
+        22,
+        24,
+        25,
+        26,
+        27
+      ]
     }
   },
   methods: {
     enviartiempo () {
       this.$emit('set-time', {
         Minutos: this.Minutos,
-        Segundos: this.Segundos
+        Segundos: this.Segundos,
+        Opciones:this.Opciones
       })
     },
     finjuego () {

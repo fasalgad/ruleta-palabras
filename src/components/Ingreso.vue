@@ -24,13 +24,15 @@
         </v-alert>
       </span>
       <v-col>
-        <v-card>
-          <v-card-title class="headline"> Con la letra 
-            {{ palabraseleccionada.letra }} :<br />
-            {{ palabraseleccionada.descripcion }}
-          </v-card-title>
-          <center></center>
-        </v-card>
+        <v-row>
+          <v-card>
+            <v-card-title class="headline">
+              Con la letra {{ palabraseleccionada.letra }} :<br />
+              {{ palabraseleccionada.descripcion }}
+            </v-card-title>
+            <center></center>
+          </v-card>
+        </v-row>
         <v-row>
           <v-form
             ref="form"
@@ -121,6 +123,7 @@ export default {
       if (this.$refs.form.validate()) {
         console.log(this.termino)
         console.log(this.palabraseleccionada)
+
         if (this.palabraseleccionada.activa) {
           if (
             this.palabraseleccionada.significado.toLowerCase() ==
@@ -128,6 +131,7 @@ export default {
           ) {
             this.correctas++
             this.actual = this.palabraseleccionada.significado
+
             //Cuando la palabra es igual
             //Debe pasar a la siguiente letra
 
@@ -201,6 +205,7 @@ export default {
   mounted () {
     this.palabraseleccionada = this.palabras.filter(el => {
       return el.id.toLowerCase() == 1
+      ele.estilo = 'item--abajo'
     })[0]
   }
 }
@@ -336,5 +341,12 @@ export default {
 }
 .circle .item--saltada {
   background-image: radial-gradient(circle, yellow, yellowgreen);
+}
+.circle .item--actual {
+  background-image: radial-gradient(
+    circle,
+    rgb(205, 50, 153),
+    rgb(50, 205, 120)
+  );
 }
 </style>
