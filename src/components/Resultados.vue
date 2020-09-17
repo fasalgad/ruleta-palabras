@@ -36,10 +36,10 @@
 <script>
 export default {
   name: 'Resultados',
-  props:{
-    result:{
-      type:Array,
-      required:true
+
+  computed:{
+    result(){
+      return this.$store.state.palabrasSeleccionadas
     }
   },
   data () {

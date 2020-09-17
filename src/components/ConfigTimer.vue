@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <h2>Bienvenido a lista Palabras</h2>
+    <h2>Bienvenido a Ruleta Palabras</h2>
     <v-row>
       <h5>Establecer Tiempo</h5>
     </v-row>
@@ -31,6 +31,7 @@
           />
         </v-col>
         <v-combobox
+          v-model="opcionSeleccionada"
           :items="Opciones"
           label="Seleccionar cantidad de Palabras"
         ></v-combobox>
@@ -58,12 +59,24 @@
 </template>
 
 <script>
+
 export default {
   name: 'ConfigTimer',
+ 
+  created(){
+    console.log(this.Opciones)    
+  },
+  // computed:{
+  //   palabras(){
+  //     return this.$store.state.palabras
+  //   }
+  // },
   data () {
     return {
       Minutos: 0,
       Segundos: 0,
+      // Opciones:[1, ...27],
+      opcionSeleccionada:null,
       Opciones: [
         1,
         2,
@@ -81,10 +94,13 @@ export default {
         14,
         15,
         16,
+        17,
         18,
+        19,
         20,
         21,
         22,
+        23,
         24,
         25,
         26,
@@ -97,8 +113,27 @@ export default {
       this.$emit('set-time', {
         Minutos: this.Minutos,
         Segundos: this.Segundos,
-        Opciones:this.Opciones
       })
+      
+      let palabras=[... this.$store.state.palabras]
+
+      // let indices= [...Opciones]
+      // indices.sort((a,b)=>{
+      //   Math.random()*10
+      // })
+      let cantidadTrue=0
+
+      this.$store.commit('SET_PALABRASSELECCIONADAS',palabras.map((ele, index)=>{
+     
+
+        if (this.opcionSeleccionada>cantidadTrue  ) {
+           ele['activa']=true
+           cantidadTrue++
+        }else{
+          ele['activa']=false
+        }
+        return ele
+      }))
     },
     finjuego () {
       console.log('this.$route', this.$route)

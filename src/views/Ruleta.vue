@@ -12,8 +12,7 @@
 
       <v-row>
         <Ingreso
-          v-if="aComenzado && palabras.length > 0"
-          :palabras="palabras"
+          v-if="aComenzado"
         />
       </v-row>
     </div>
@@ -26,7 +25,7 @@
       </v-col>
 
       <v-col>
-        <Resultados v-if="palabras.length > 0" :result="palabras" />
+        <Resultados />
       </v-col>
       <v-col v-if="palabras.length == 0">
         <h1>Error al cargar contenido</h1>
@@ -41,6 +40,7 @@ import Ingreso from '@/components/Ingreso.vue'
 import Temporizador from '@/components/Temporizador.vue'
 import Resultados from '@/components/Resultados.vue'
 
+
 export default {
   components: {
     Ingreso,
@@ -48,6 +48,7 @@ export default {
     Resultados
   },
   data () {
+
     return {
       palabras: [],
       aComenzado: false
@@ -57,6 +58,7 @@ export default {
     this.$http.get('/palabras').then(response => {
       console.log('$http', response)
       this.palabras = response.data
+      this.$store.commit('SET_PALABRAS',this.palabras)
     })
   },
   methods: {
@@ -68,6 +70,15 @@ export default {
     cambiarVisibilidad ({ comenzando }) {
       this.aComenzado = comenzando
     }
-  }
+  },
+
+   reset () {
+      this.stop()
+      this.time = 0
+      this.Segundos = 0
+      this.Minutos = 0
+      this.dialogo1= true
+    },   
+
 }
 </script>

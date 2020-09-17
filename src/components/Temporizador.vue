@@ -19,6 +19,15 @@
             @click="start"
             >Iniciar</v-btn
           >
+          <v-btn este botón ponía pausa
+            class="ma-2"
+            tile
+            color="#FFC107"
+            v-if="isRunning"
+            @click="stop"
+            >Pausar</v-btn>
+     
+
           
           <v-btn class="ma-2" tile color="#FFAB40" @click="reset"
             >Reiniciar</v-btn
@@ -29,6 +38,21 @@
         </div>
       </div>
     </v-card>
+    <v-dialog v-model="dialogo1" hide-overlay persistent width="500px" justify-center align-center
+     
+    >
+      <v-card>
+        <v-img src="../assets/mario.jpg" max-height="600px" max-width="800px" aling-center justify-center/>
+        <v-btn
+            class="ma-2"
+            outlined
+            color="indigo"
+            @click="start"
+            v-show="!isRunnig"
+        > iniciar nueva partida </v-btn>
+        <v-card-title class="headline">Fin del tiempo</v-card-title>
+      </v-card>
+    </v-dialog>
   </div>
 </template>
 
@@ -40,7 +64,8 @@ export default {
   name: 'Temporizador',
   components: {
     'timer-setup': ConfigTimer,
-    timer: Timer
+    timer: Timer,
+    
   },
   data () {
     return {
@@ -48,7 +73,8 @@ export default {
       Minutos: 0,
       Segundos: 0,
       time: 0,
-      timer: null
+      timer: null,
+      dialogo1: false
     }
   },
 
@@ -58,6 +84,14 @@ export default {
       let Minutos = parseInt(time)
       let Segundos = Math.round((time - Minutos) * 60)
       return Minutos + ':' + Segundos
+    }
+  },
+   watch:{
+    dialogo1(val){
+      if(!val) return ;
+      setTimeout(() => {
+        this.dialogo1=false
+      }, 3000);
     }
   },
 
@@ -100,6 +134,8 @@ export default {
       this.time = 0
       this.Segundos = 0
       this.Minutos = 0
+      this.dialogo1 = true
+      
     },
     setTime (payload) {
       this.time = parseInt(payload.Minutos) * 60 + parseInt(payload.Segundos)
@@ -107,11 +143,3 @@ export default {
   }
 }
 </script>
-<!-- <v-btn este botón ponía pausa
-            class="ma-2"
-            tile
-            color="#FFC107"
-            v-if="isRunning"
-            @click="stop"
-            >Pausar</v-btn
-          > -->

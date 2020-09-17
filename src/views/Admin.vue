@@ -6,7 +6,7 @@
           <v-list>
             <v-list-item v-for="(palabra, i) of palabras" :key="i">
               <v-list-item-content>
-                <v-card>
+                <v-card max-width="800">
                   <v-card-text>
                     {{ palabra.letra }}
                   </v-card-text>
@@ -24,7 +24,7 @@
           </v-list>
         </v-col>
         <v-col cols="6">
-          <div style="position:fixed;width:40%;">
+          <div style="position:fixed;width:400;">
             <v-card>
               <v-card-title>
                 Detalle
@@ -140,7 +140,7 @@ export default {
           })
           .then(response => {
             alert(`
-              Se modificó la letra ${response.data.letra}
+              Se actualizó la letra ${response.data.letra}
               `)
             this.viewDetails(response)
             this.loadPalabras()

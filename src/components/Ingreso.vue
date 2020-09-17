@@ -25,7 +25,12 @@
       </span>
       <v-col>
         <v-row>
-          <v-card>
+          <v-card
+            class="pregunta"
+            max-width="600"
+            max-height="385"
+            justify="center"
+          >
             <v-card-title class="headline">
               Con la letra {{ palabraseleccionada.letra }} :<br />
               {{ palabraseleccionada.descripcion }}
@@ -58,7 +63,7 @@
             </v-btn>
 
             <v-btn color="warning" class="mr-4" @click="saltar">
-              Siguiente
+              SALTAR
             </v-btn>
           </v-form>
         </v-row>
@@ -90,15 +95,17 @@
         </v-row>
       </v-col>
     </v-row>
+
+    
   </v-container>
 </template>
 
 <script>
 export default {
   name: 'Ingreso',
-  props: {
-    palabras: Array
-  },
+  // props: {
+  //   palabras: Array
+  // },
   data: () => ({
     posicionLetra: 'A',
     item: 0, //posición en que inicia la lista
@@ -117,9 +124,15 @@ export default {
       v => (v && v.length > 0) || 'No puede estar vacio'
     ]
   }),
-
+  computed: {
+    palabras () {
+      console.log(this.$store.state.palabrasSeleccionadas)
+      return this.$store.state.palabrasSeleccionadas
+    }
+  },
   methods: {
     validate () {
+      let palabras = this.$store.state.palabrasSeleccionadas
       if (this.$refs.form.validate()) {
         console.log(this.termino)
         console.log(this.palabraseleccionada)
@@ -135,14 +148,14 @@ export default {
             //Cuando la palabra es igual
             //Debe pasar a la siguiente letra
 
-            this.palabras.forEach(ele => {
+            palabras.forEach(ele => {
               if (ele.letra == this.palabraseleccionada.letra) {
                 ele.estilo = 'item--success'
                 ele.activa = false
               }
             })
 
-            this.palabraseleccionada = this.palabras.filter(
+            this.palabraseleccionada = palabras.filter(
               ele => ele.letra == this.palabraseleccionada.nextLetra
             )[0]
             this.ap++
@@ -153,15 +166,15 @@ export default {
               this.item = 0
             }
           } else {
-            this.palabras.forEach(ele => {
+            palabras.forEach(ele => {
               if (ele.letra == this.palabraseleccionada.letra) {
                 ele.estilo = 'item--failure'
               }
             })
-            this.palabraseleccionada = this.palabras.filter(
+            this.palabraseleccionada = palabras.filter(
               ele => ele.letra == this.palabraseleccionada.nextLetra
             )[0]
-            // this.item++
+            this.item++
             this.ap++
             this.malas++
             this.actual = this.palabraseleccionada.significado
@@ -183,7 +196,8 @@ export default {
       this.palabraseleccionada = palabra
     },
     saltar () {
-      this.palabras.forEach(ele => {
+      let palabras = this.$store.state.palabrasSeleccionadas
+      palabras.forEach(ele => {
         if (ele.letra == this.palabraseleccionada.letra) {
           ele.estilo = 'item--saltada'
         }
@@ -194,19 +208,16 @@ export default {
         this.item = 0
       }
       //  console.log('Saltando')
-
       console.log(this.palabraseleccionada.nextLetra)
-      this.palabraseleccionada = this.palabras.filter(
+      this.palabraseleccionada = palabras.filter(
         ele => ele.letra == this.palabraseleccionada.nextLetra
       )[0]
     }
   },
 
   mounted () {
-    this.palabraseleccionada = this.palabras.filter(el => {
-      return el.id.toLowerCase() == 1
-      ele.estilo = 'item--abajo'
-    })[0]
+    let palabras = this.$store.state.palabrasSeleccionadas
+    this.palabraseleccionada = palabras[0]
   }
 }
 </script>
