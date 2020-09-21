@@ -130,7 +130,7 @@ export default {
            ele['activa']=true
            cantidadTrue++
         }else{
-          ele['activa']=false
+          ele['activa']=true
         }
         return ele
       }))

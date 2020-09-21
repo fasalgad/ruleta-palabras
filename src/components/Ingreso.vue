@@ -95,8 +95,6 @@
         </v-row>
       </v-col>
     </v-row>
-
-    
   </v-container>
 </template>
 
@@ -161,7 +159,6 @@ export default {
             this.ap++
             this.item++
             this.termino = ''
-            ///// Aqui deberia intentar cambiar el color
             if (this.item > 26) {
               this.item = 0
             }

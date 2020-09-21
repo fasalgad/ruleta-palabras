@@ -19,16 +19,19 @@
             @click="start"
             >Iniciar</v-btn
           >
-          <v-btn este botón ponía pausa
+          <v-btn
+            este
+            botón
+            ponía
+            pausa
             class="ma-2"
             tile
             color="#FFC107"
             v-if="isRunning"
             @click="stop"
-            >Pausar</v-btn>
-     
+            >Pausar</v-btn
+          >
 
-          
           <v-btn class="ma-2" tile color="#FFAB40" @click="reset"
             >Reiniciar</v-btn
           >
@@ -38,19 +41,24 @@
         </div>
       </div>
     </v-card>
-    <v-dialog v-model="dialogo1" hide-overlay persistent width="500px" justify-center align-center
-     
+    <v-dialog
+      v-model="dialogo1"
+      hide-overlay
+      persistent
+      width="500px"
+      justify-center
+      align-center
     >
       <v-card>
-        <v-img src="../assets/mario.jpg" max-height="600px" max-width="800px" aling-center justify-center/>
-        <v-btn
-            class="ma-2"
-            outlined
-            color="indigo"
-            @click="start"
-            v-show="!isRunnig"
-        > iniciar nueva partida </v-btn>
-        <v-card-title class="headline">Fin del tiempo</v-card-title>
+        <v-img
+          src="../assets/mario.jpg"
+          max-height="600px"
+          max-width="800px"
+          aling-center
+          justify-center
+        />
+
+        <v-card-title class="headline">Has perdido!!!</v-card-title>
       </v-card>
     </v-dialog>
   </div>
@@ -64,8 +72,7 @@ export default {
   name: 'Temporizador',
   components: {
     'timer-setup': ConfigTimer,
-    timer: Timer,
-    
+    timer: Timer
   },
   data () {
     return {
@@ -86,12 +93,12 @@ export default {
       return Minutos + ':' + Segundos
     }
   },
-   watch:{
-    dialogo1(val){
-      if(!val) return ;
+  watch: {
+    dialogo1 (val) {
+      if (!val) return
       setTimeout(() => {
-        this.dialogo1=false
-      }, 3000);
+        this.dialogo1 = false
+      }, 3000)
     }
   },
 
@@ -135,7 +142,6 @@ export default {
       this.Segundos = 0
       this.Minutos = 0
       this.dialogo1 = true
-      
     },
     setTime (payload) {
       this.time = parseInt(payload.Minutos) * 60 + parseInt(payload.Segundos)
