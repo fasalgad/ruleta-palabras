@@ -12,16 +12,55 @@
         "id": "1",
         "letra": "A",
         "nextLetra": "B",
-        "significado": "Analíticosssssssssssssssssssss",
+        "significado": "Analítico",
         "estilo": "estilo-basico",
         "activa": true,
-        "descripcion": "Perteneciente o relativo al análisis.ssssssssssssssssssssss"
+        "descripcion": "Perteneciente o relativo al análisis.\n",
+        "data": {
+          "id": "1",
+          "letra": "A",
+          "nextLetra": "B",
+          "significado": "Analíticosssssssssssssssssssss",
+          "estilo": "estilo-basico",
+          "activa": true,
+          "descripcion": "Perteneciente o relativo al análisis.ssssssssssssssssssssss"
+        },
+        "status": 200,
+        "statusText": "OK",
+        "headers": {
+          "cache-control": "no-cache",
+          "content-length": "231",
+          "content-type": "application/json; charset=utf-8",
+          "expires": "-1",
+          "pragma": "no-cache"
+        },
+        "config": {
+          "url": "/palabras/1",
+          "method": "put",
+          "data": "{\"id\":\"1\",\"letra\":\"A\",\"nextLetra\":\"B\",\"significado\":\"Analíticosssssssssssssssssssss\",\"estilo\":\"estilo-basico\",\"activa\":true,\"descripcion\":\"Perteneciente o relativo al análisis.ssssssssssssssssssssss\"}",
+          "headers": {
+            "Accept": "application/json, text/plain, */*",
+            "Content-Type": "application/json;charset=utf-8"
+          },
+          "baseURL": "//localhost:8089",
+          "transformRequest": [
+            null
+          ],
+          "transformResponse": [
+            null
+          ],
+          "timeout": 0,
+          "xsrfCookieName": "XSRF-TOKEN",
+          "xsrfHeaderName": "X-XSRF-TOKEN",
+          "maxContentLength": -1,
+          "maxBodyLength": -1
+        },
+        "request": {}
       },
       "status": 200,
       "statusText": "OK",
       "headers": {
         "cache-control": "no-cache",
-        "content-length": "231",
         "content-type": "application/json; charset=utf-8",
         "expires": "-1",
         "pragma": "no-cache"
@@ -29,7 +68,7 @@
       "config": {
         "url": "/palabras/1",
         "method": "put",
-        "data": "{\"id\":\"1\",\"letra\":\"A\",\"nextLetra\":\"B\",\"significado\":\"Analíticosssssssssssssssssssss\",\"estilo\":\"estilo-basico\",\"activa\":true,\"descripcion\":\"Perteneciente o relativo al análisis.ssssssssssssssssssssss\"}",
+        "data": "{\"id\":\"1\",\"letra\":\"A\",\"nextLetra\":\"B\",\"significado\":\"Analítico\",\"estilo\":\"estilo-basico\",\"activa\":true,\"descripcion\":\"Perteneciente o relativo al análisis.\\n\",\"data\":{\"id\":\"1\",\"letra\":\"A\",\"nextLetra\":\"B\",\"significado\":\"Analíticosssssssssssssssssssss\",\"estilo\":\"estilo-basico\",\"activa\":true,\"descripcion\":\"Perteneciente o relativo al análisis.ssssssssssssssssssssss\"},\"status\":200,\"statusText\":\"OK\",\"headers\":{\"cache-control\":\"no-cache\",\"content-length\":\"231\",\"content-type\":\"application/json; charset=utf-8\",\"expires\":\"-1\",\"pragma\":\"no-cache\"},\"config\":{\"url\":\"/palabras/1\",\"method\":\"put\",\"data\":\"{\\\"id\\\":\\\"1\\\",\\\"letra\\\":\\\"A\\\",\\\"nextLetra\\\":\\\"B\\\",\\\"significado\\\":\\\"Analíticosssssssssssssssssssss\\\",\\\"estilo\\\":\\\"estilo-basico\\\",\\\"activa\\\":true,\\\"descripcion\\\":\\\"Perteneciente o relativo al análisis.ssssssssssssssssssssss\\\"}\",\"headers\":{\"Accept\":\"application/json, text/plain, */*\",\"Content-Type\":\"application/json;charset=utf-8\"},\"baseURL\":\"//localhost:8089\",\"transformRequest\":[null],\"transformResponse\":[null],\"timeout\":0,\"xsrfCookieName\":\"XSRF-TOKEN\",\"xsrfHeaderName\":\"X-XSRF-TOKEN\",\"maxContentLength\":-1,\"maxBodyLength\":-1},\"request\":{}}",
         "headers": {
           "Accept": "application/json, text/plain, */*",
           "Content-Type": "application/json;charset=utf-8"

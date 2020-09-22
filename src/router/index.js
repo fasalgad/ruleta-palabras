@@ -33,11 +33,6 @@ Vue.use(VueRouter)
     path: '/',
     name: 'juegos',
     component: () => import(/* webpackChunkName: "juegos" */ '../views/Juegos.vue')
-  },
-  {
-    path: '/r',
-    name: 'r',
-    component: () => import(/* webpackChunkName: "juegos" */ '../views/R.vue')
   }
 
 ]

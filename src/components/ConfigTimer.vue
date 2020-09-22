@@ -130,7 +130,7 @@ export default {
            ele['activa']=true
            cantidadTrue++
         }else{
-          ele['activa']=true
+          ele['activa']=false //está tomando solo una palabra
         }
         return ele
       }))

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Juegos Prácticos</h1>
+    <h1>Ruleta Palabras</h1>
   </div>
 </template>
 

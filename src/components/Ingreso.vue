@@ -166,6 +166,7 @@ export default {
             palabras.forEach(ele => {
               if (ele.letra == this.palabraseleccionada.letra) {
                 ele.estilo = 'item--failure'
+                this.actual = this.palabraseleccionada.significado
               }
             })
             this.palabraseleccionada = palabras.filter(
@@ -174,8 +175,9 @@ export default {
             this.item++
             this.ap++
             this.malas++
-            this.actual = this.palabraseleccionada.significado
+            
             this.termino = ''
+           
 
             if (this.item > 26) {
               this.item = 0
@@ -351,10 +353,7 @@ export default {
   background-image: radial-gradient(circle, yellow, yellowgreen);
 }
 .circle .item--actual {
-  background-image: radial-gradient(
-    circle,
-    rgb(205, 50, 153),
-    rgb(50, 205, 120)
-  );
+  background-image: radial-gradient(circle, rgb(205, 50, 153), rgb(50, 205, 120));
 }
+
 </style>
