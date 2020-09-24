@@ -10,7 +10,7 @@
               :style="estilo1"
               @click="seleccionado(palabra, index)"
               class="items"
-              :class="palabra.estilo"
+              :class="clasesLetras(palabra)"
             >
               {{ palabra.letra }}
             </li>
@@ -129,6 +129,14 @@ export default {
     }
   },
   methods: {
+    clasesLetras({estilo,activa}){
+      return {
+        'item--success':estilo=='item--success',
+        'item--failure':estilo=='item--failure',
+        'item--saltada':estilo=='item--saltada',
+        'item--enabled':!activa
+      }
+    },
     validate () {
       let palabras = this.$store.state.palabrasSeleccionadas
       if (this.$refs.form.validate()) {
@@ -217,6 +225,7 @@ export default {
   mounted () {
     let palabras = this.$store.state.palabrasSeleccionadas
     this.palabraseleccionada = palabras[0]
+    console.log(palabras)
   }
 }
 </script>
@@ -352,6 +361,13 @@ export default {
 .circle .item--saltada {
   background-image: radial-gradient(circle, yellow, yellowgreen);
 }
+
+.circle .item--enabled {
+  background-image: radial-gradient(circle, #222, #777);
+}
+
+
+
 .circle .item--actual {
   background-image: radial-gradient(circle, rgb(205, 50, 153), rgb(50, 205, 120));
 }

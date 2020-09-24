@@ -154,7 +154,7 @@ export default {
 <style scoped>
 .Titulo {
   color: rgb(78, 167, 137);
-  font-size: 25px;
+  font-size: 50px;
   text-align: center;
   text-shadow: 2px 2px 5px rgb(0, 255, 115);
   text-decoration: overline;

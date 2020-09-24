@@ -122,19 +122,33 @@ export default {
       //   Math.random()*10
       // })
       let cantidadTrue=0
+      
+      let random=[]
+      
+
+      for(let i=0; i<this.opcionSeleccionada;i++){
+        let num=this.NumerosAleatorios(1,27) 
+        if(!random.includes(num)){
+          random.push(num)
+        }
+        else{
+          i--
+        }
+      }
+      
 
       this.$store.commit('SET_PALABRASSELECCIONADAS',palabras.map((ele, index)=>{
-     
-
-        if (this.opcionSeleccionada>cantidadTrue  ) {
+        if (random.includes(index+1)  ) {
            ele['activa']=true
-           cantidadTrue++
         }else{
-          ele['activa']=false //está tomando solo una palabra
+          ele['activa']=false //está tomando solo la cantidad indicada palabra
         }
         return ele
       }))
     },
+    NumerosAleatorios(min, max) {
+   return Math.round(Math.random() * (max - min) + min);
+},
     finjuego () {
       console.log('this.$route', this.$route)
       console.log('this.$router', this.$router)
