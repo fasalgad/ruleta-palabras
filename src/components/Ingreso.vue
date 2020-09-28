@@ -32,7 +32,7 @@
             justify="center"
           >
             <v-card-title class="headline">
-              Con la letra {{ palabraseleccionada.letra }} :<br />
+              Con la letra {{ palabraseleccionada.letra}} :<br />
               {{ palabraseleccionada.descripcion }}
             </v-card-title>
             <center></center>
@@ -59,11 +59,12 @@
               class="mr-4"
               @click="validate"
             >
-              Aceptar
+              Responder
+
             </v-btn>
 
             <v-btn color="warning" class="mr-4" @click="saltar">
-              SALTAR
+              Siguiente
             </v-btn>
           </v-form>
         </v-row>
@@ -129,16 +130,20 @@ export default {
     }
   },
   methods: {
-    clasesLetras({estilo,activa}){
+    clasesLetras({estilo,enabled}){
       return {
         'item--success':estilo=='item--success',
         'item--failure':estilo=='item--failure',
         'item--saltada':estilo=='item--saltada',
-        'item--enabled':!activa
+
+     'item--enabled':!enabled
       }
     },
     validate () {
-      let palabras = this.$store.state.palabrasSeleccionadas
+      
+      let palabras = [... this.$store.state.palabrasSeleccionadas]
+      console.group('validate')
+      console.log(palabras)
       if (this.$refs.form.validate()) {
         console.log(this.termino)
         console.log(this.palabraseleccionada)
@@ -156,14 +161,18 @@ export default {
 
             palabras.forEach(ele => {
               if (ele.letra == this.palabraseleccionada.letra) {
+                console.log(ele.letra)
                 ele.estilo = 'item--success'
                 ele.activa = false
               }
             })
-
-            this.palabraseleccionada = palabras.filter(
-              ele => ele.letra == this.palabraseleccionada.nextLetra
-            )[0]
+            
+            do{
+              this.palabraseleccionada = palabras.filter(
+                ele => ele.letra == this.palabraseleccionada.nextLetra
+              )[0]
+            }while(this.palabraseleccionada.enabled==false)
+            
             this.ap++
             this.item++
             this.termino = ''
@@ -178,7 +187,7 @@ export default {
               }
             })
             this.palabraseleccionada = palabras.filter(
-              ele => ele.letra == this.palabraseleccionada.nextLetra
+              ele => ele.letra == this.palabraseleccionada.nextLetra 
             )[0]
             this.item++
             this.ap++
@@ -196,6 +205,7 @@ export default {
           this.item++
         }
       }
+      console.groupEnd('validate')
     },
 
     seleccionado (palabra) {
@@ -203,7 +213,7 @@ export default {
       this.palabraseleccionada = palabra
     },
     saltar () {
-      let palabras = this.$store.state.palabrasSeleccionadas
+      let palabras = [...this.$store.state.palabrasSeleccionadas]
       palabras.forEach(ele => {
         if (ele.letra == this.palabraseleccionada.letra) {
           ele.estilo = 'item--saltada'
@@ -217,15 +227,20 @@ export default {
       //  console.log('Saltando')
       console.log(this.palabraseleccionada.nextLetra)
       this.palabraseleccionada = palabras.filter(
-        ele => ele.letra == this.palabraseleccionada.nextLetra
+        ele => ele.letra == this.palabraseleccionada.nextLetra 
       )[0]
     }
   },
 
   mounted () {
-    let palabras = this.$store.state.palabrasSeleccionadas
-    this.palabraseleccionada = palabras[0]
-    console.log(palabras)
+    console.group('Mounted')
+    let palabras = [...this.$store.state.palabrasSeleccionadas]
+    
+    this.palabraseleccionada = palabras.find(ele=>{
+      return ele.enabled==true
+    })
+    console.log(this.palabraseleccionada)
+    console.groupEnd('Mounted')
   }
 }
 </script>
@@ -272,7 +287,7 @@ export default {
 }
 
 .circle > *:nth-of-type(8) {
-  transform: rotate(368.15deg) translate(16em) rotate(-375.83deg);
+  transform: rotate(368.15deg) translate(16em) rotate(-368.15deg);
 }
 
 .circle > *:nth-of-type(9) {
