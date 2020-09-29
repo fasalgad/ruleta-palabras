@@ -203,8 +203,14 @@ export default {
             }
           }
         } else {
-          alert('Ya fue resuelta')
+           alert('Ya fue resuelta')
           this.item++
+           do{
+              this.palabraseleccionada = palabras.filter(
+                ele => ele.letra == this.palabraseleccionada.nextLetra
+              )[0]
+            }while(this.palabraseleccionada.enabled==false)
+         
         }
       }
       console.groupEnd('validate')
@@ -218,7 +224,9 @@ export default {
       let palabras = [...this.$store.state.palabrasSeleccionadas]
       palabras.forEach(ele => {
         if (ele.letra == this.palabraseleccionada.letra) {
-          ele.estilo = 'item--saltada'
+          if(this.palabraseleccionada.activa == true){
+            
+          ele.estilo = 'item--saltada'}
         }
       })
       //poner en color amarillo
