@@ -145,6 +145,8 @@ export default {
           return ele
         })
       )
+
+      this.$store.commit("SET_OPCIONES", { opcionesjuego: this.opcionSeleccionada });
     },
     NumerosAleatorios (min, max) {
       return Math.round(Math.random() * (max - min) + min)
@@ -153,7 +155,8 @@ export default {
       console.log('this.$route', this.$route)
       console.log('this.$router', this.$router)
       this.$router.push('/')
-    }
+    },
+    
   }
 }
 </script>

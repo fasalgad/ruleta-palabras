@@ -19,9 +19,7 @@
       </v-col>
 
       <span v-if="malas === 3">
-        <v-alert type="error">
-          Superaste el máximo de intentos bye bye!!!
-        </v-alert>
+        
       </span>
       <v-col>
         <v-row>
@@ -88,14 +86,70 @@
 
             <br />
 
-            <v-card>
-              <v-card-title class="headline">Número de errores:</v-card-title>
-              <center>{{ malas }}</center>
-            </v-card>
+         
           </div>
         </v-row>
       </v-col>
     </v-row>
+
+
+
+
+
+
+<v-dialog
+      v-model="MensajeGanador"
+      hide-overlay
+      persistent
+      width="500px"
+      justify-center
+      align-center
+    >
+      <v-card>
+        <v-img
+          src="../assets/winner.jpg"
+          max-height="600px"
+          max-width="800px"
+          aling-center
+          justify-center
+        />
+
+        <v-card-title class="headline">Has Ganado!!!</v-card-title>
+      </v-card>
+    </v-dialog>
+
+
+<v-dialog
+      v-model="MensajeIntentos"
+      hide-overlay
+      persistent
+      width="500px"
+      justify-center
+      align-center
+    >
+      <v-card>
+        <v-img
+          src="../assets/intentos.jpg"
+          max-height="600px"
+          max-width="800px"
+          aling-center
+          justify-center
+        />
+
+        <v-card-title class="headline">Superaste los intentos!!</v-card-title>
+      </v-card>
+    </v-dialog>
+
+
+
+
+
+
+
+
+
+
+    <div v-show="false">{{ CantidadesPalabras }}</div>
   </v-container>
 </template>
 
@@ -111,9 +165,12 @@ export default {
     valid: true,
     termino: '',
     ap: 0,
+    MensajeGanador:false,
+    MensajeIntentos:false,
     correctas: 0,
     malas: 0,
     actual: '',
+    cantidadopciones:0,
     estilo1: { border: '', 'font-size': '15px' },
     palabraseleccionada: '',
     lazy: true,
@@ -127,9 +184,29 @@ export default {
     palabras () {
       console.log(this.$store.state.palabrasSeleccionadas)
       return this.$store.state.palabrasSeleccionadas
+    },
+    CantidadesPalabras(){
+      this.cantidadopciones= this.$store.state.opcionesjuego;
+      return this.$store.state.opcionesjuego;
     }
   },
+    watch: {
+    MensajeGanador (val) {
+      if (!val) return
+      setTimeout(() => {
+        this.MensajeGanador = false
+      }, 3000)
+    },
+      MensajeIntentos (val) {
+      if (!val) return
+      setTimeout(() => {
+        this.MensajeIntentos = false
+      }, 3000)
+    }
+  },
+
   methods: {
+  
     clasesLetras({estilo,enabled}){
       return {
         'item--success':estilo=='item--success',
@@ -154,6 +231,9 @@ export default {
             this.termino.toLowerCase()
           ) {
             this.correctas++
+           if(this.correctas==this.cantidadopciones){
+             this.MensajeGanador=true
+           }
             this.actual = this.palabraseleccionada.significado
 
             //Cuando la palabra es igual
@@ -183,6 +263,7 @@ export default {
             palabras.forEach(ele => {
               if (ele.letra == this.palabraseleccionada.letra) {
                 ele.estilo = 'item--failure'
+                ele.activa = false
                 this.actual = this.palabraseleccionada.significado
               }
             })
@@ -194,7 +275,9 @@ export default {
             this.item++
             this.ap++
             this.malas++
-            
+            if(this.malas==3){
+              this.MensajeIntentos=true
+            }
             this.termino = ''
            
 
@@ -242,6 +325,7 @@ export default {
   },
 
   mounted () {
+    
     console.group('Mounted')
     let palabras = [...this.$store.state.palabrasSeleccionadas]
     
