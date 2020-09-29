@@ -186,9 +186,11 @@ export default {
                 this.actual = this.palabraseleccionada.significado
               }
             })
-            this.palabraseleccionada = palabras.filter(
-              ele => ele.letra == this.palabraseleccionada.nextLetra 
-            )[0]
+          do{
+              this.palabraseleccionada = palabras.filter(
+                ele => ele.letra == this.palabraseleccionada.nextLetra
+              )[0]
+            }while(this.palabraseleccionada.enabled==false)
             this.item++
             this.ap++
             this.malas++
@@ -220,15 +222,14 @@ export default {
         }
       })
       //poner en color amarillo
-      this.item++
-      if (this.item > 26) {
-        this.item = 0
-      }
+      do{
+              this.palabraseleccionada = palabras.filter(
+                ele => ele.letra == this.palabraseleccionada.nextLetra
+              )[0]
+            }while(this.palabraseleccionada.enabled==false)
       //  console.log('Saltando')
       console.log(this.palabraseleccionada.nextLetra)
-      this.palabraseleccionada = palabras.filter(
-        ele => ele.letra == this.palabraseleccionada.nextLetra 
-      )[0]
+ 
     }
   },
 
