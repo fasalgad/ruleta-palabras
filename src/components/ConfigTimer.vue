@@ -123,7 +123,7 @@ export default {
       // })
       let cantidadTrue = 0
 
-      let random = []//???
+      let random = [] //???
 
       for (let i = 0; i < this.opcionSeleccionada; i++) {
         let num = this.NumerosAleatorios(1, 27)
@@ -138,15 +138,17 @@ export default {
         'SET_PALABRASSELECCIONADAS',
         palabras.map((ele, index) => {
           if (random.includes(index + 1)) {
-            ele['enabled'] = true//está tomando solo la cantidad indicada palabra
+            ele['enabled'] = true //está tomando solo la cantidad indicada palabra
           } else {
-            ele['enabled'] = false 
+            ele['enabled'] = false
           }
           return ele
         })
       )
 
-      this.$store.commit("SET_OPCIONES", { opcionesjuego: this.opcionSeleccionada });
+      this.$store.commit('SET_OPCIONES', {
+        opcionesjuego: this.opcionSeleccionada
+      })
     },
     NumerosAleatorios (min, max) {
       return Math.round(Math.random() * (max - min) + min)
@@ -155,8 +157,7 @@ export default {
       console.log('this.$route', this.$route)
       console.log('this.$router', this.$router)
       this.$router.push('/')
-    },
-    
+    }
   }
 }
 </script>

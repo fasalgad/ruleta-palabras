@@ -1,6 +1,6 @@
 <template>
   <div class="text-center">
-    <v-dialog v-model="(dialog)" width="1080">
+    <v-dialog v-model="dialog" width="1080">
       <template v-slot:activator="{ on, attrs }">
         <v-btn color="blue" dark v-bind="attrs" v-on="on">
           LISTA DE RESPUESTAS
@@ -10,12 +10,11 @@
       <v-card>
         <v-card-title class="green">
           Resultados Esperados
-
         </v-card-title>
         <v-card-text>
           <ol>
-            <li v-for="(ob, i) in result " :key="i" dark>
-            {{ob.letra}} -> {{ob.significado}} : {{ob.descripcion}}
+            <li v-for="(ob, i) in result" :key="i" dark>
+              {{ ob.letra }} -> {{ ob.significado }} : {{ ob.descripcion }}
             </li>
           </ol>
         </v-card-text>
@@ -37,14 +36,14 @@
 export default {
   name: 'Resultados',
 
-  computed:{
-    result(){
+  computed: {
+    result () {
       return this.$store.state.palabrasSeleccionadas
     }
   },
   data () {
     return {
-      dialog: false
+      dialog: false,
     }
   }
 }

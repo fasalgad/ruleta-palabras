@@ -18,19 +18,17 @@
         </div>
       </v-col>
 
-      <span v-if="malas === 3">
-        
-      </span>
+      <span v-if="malas === 3"> </span>
       <v-col>
         <v-row>
           <v-card
             class="pregunta"
-            max-width="600"
-            max-height="385"
+            max-width="500"
+            max-height="250"
             justify="center"
           >
             <v-card-title class="headline">
-              Con la letra {{ palabraseleccionada.letra}} :<br />
+              Con la letra {{ palabraseleccionada.letra }} :<br />
               {{ palabraseleccionada.descripcion }}
             </v-card-title>
             <center></center>
@@ -58,11 +56,14 @@
               @click="validate"
             >
               Responder
-
             </v-btn>
 
             <v-btn color="warning" class="mr-4" @click="saltar">
               Siguiente
+            </v-btn>
+
+            <v-btn color="primary" dark @click.stop="dialog = true">
+              Terminar
             </v-btn>
           </v-form>
         </v-row>
@@ -85,19 +86,15 @@
             </v-card>
 
             <br />
-
-         
+            <v-card>
+              <v-card-title class="headline">Número de Malas</v-card-title>
+              <center>{{ malas }}</center>
+            </v-card>
           </div>
         </v-row>
       </v-col>
     </v-row>
-
-
-
-
-
-
-<v-dialog
+    <v-dialog
       v-model="MensajeGanador"
       hide-overlay
       persistent
@@ -113,13 +110,12 @@
           aling-center
           justify-center
         />
-
+        Has obtenido {{ correctas }} respuestas buenas
         <v-card-title class="headline">Has Ganado!!!</v-card-title>
       </v-card>
     </v-dialog>
 
-
-<v-dialog
+    <v-dialog
       v-model="MensajeIntentos"
       hide-overlay
       persistent
@@ -140,16 +136,46 @@
       </v-card>
     </v-dialog>
 
-
-
-
-
-
-
-
-
-
     <div v-show="false">{{ CantidadesPalabras }}</div>
+
+    <v-dialog
+      v-model="dialog"
+      hide-overlay
+      persistent
+      width="500px"
+      justify-center
+      align-center
+    >
+      <v-card>
+        <v-img
+          src="../assets/lluvia.gif"
+          max-height="600px"
+          max-width="800px"
+          aling-center
+          justify-center
+        />
+        <v-card-title class="headline">
+          Terminaste, debemos mejorar
+        </v-card-title>
+
+        <v-card-text>
+          Numero de aciertos {{ correctas }} <br />
+          Numero de error {{ malas }}
+        </v-card-text>
+
+        <v-card-actions>
+          <v-spacer></v-spacer>
+
+          <v-btn color="green darken-1" text @click="dialog = false" disabled>
+            Disagree
+          </v-btn>
+
+          <v-btn color="green darken-1" text @click="dialog = false">
+            Salir
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </v-container>
 </template>
 
@@ -165,12 +191,13 @@ export default {
     valid: true,
     termino: '',
     ap: 0,
-    MensajeGanador:false,
-    MensajeIntentos:false,
+    MensajeGanador: false,
+    MensajeIntentos: false,
+    dialog: false,
     correctas: 0,
     malas: 0,
     actual: '',
-    cantidadopciones:0,
+    cantidadopciones: 0,
     estilo1: { border: '', 'font-size': '15px' },
     palabraseleccionada: '',
     lazy: true,
@@ -185,19 +212,19 @@ export default {
       console.log(this.$store.state.palabrasSeleccionadas)
       return this.$store.state.palabrasSeleccionadas
     },
-    CantidadesPalabras(){
-      this.cantidadopciones= this.$store.state.opcionesjuego;
-      return this.$store.state.opcionesjuego;
+    CantidadesPalabras () {
+      this.cantidadopciones = this.$store.state.opcionesjuego
+      return this.$store.state.opcionesjuego
     }
   },
-    watch: {
+  watch: {
     MensajeGanador (val) {
       if (!val) return
       setTimeout(() => {
         this.MensajeGanador = false
       }, 3000)
     },
-      MensajeIntentos (val) {
+    MensajeIntentos (val) {
       if (!val) return
       setTimeout(() => {
         this.MensajeIntentos = false
@@ -206,19 +233,16 @@ export default {
   },
 
   methods: {
-  
-    clasesLetras({estilo,enabled}){
+    clasesLetras ({ estilo, enabled }) {
       return {
-        'item--success':estilo=='item--success',
-        'item--failure':estilo=='item--failure',
-        'item--saltada':estilo=='item--saltada',
-
-     'item--enabled':!enabled
+        'item--success': estilo == 'item--success',
+        'item--failure': estilo == 'item--failure',
+        'item--saltada': estilo == 'item--saltada',
+        'item--enabled': !enabled
       }
     },
     validate () {
-      
-      let palabras = [... this.$store.state.palabrasSeleccionadas]
+      let palabras = [...this.$store.state.palabrasSeleccionadas]
       console.group('validate')
       console.log(palabras)
       if (this.$refs.form.validate()) {
@@ -231,9 +255,9 @@ export default {
             this.termino.toLowerCase()
           ) {
             this.correctas++
-           if(this.correctas==this.cantidadopciones){
-             this.MensajeGanador=true
-           }
+            if (this.correctas == this.cantidadopciones) {
+              this.MensajeGanador = true
+            }
             this.actual = this.palabraseleccionada.significado
 
             //Cuando la palabra es igual
@@ -246,13 +270,13 @@ export default {
                 ele.activa = false
               }
             })
-            
-            do{
+
+            do {
               this.palabraseleccionada = palabras.filter(
                 ele => ele.letra == this.palabraseleccionada.nextLetra
               )[0]
-            }while(this.palabraseleccionada.enabled==false)
-            
+            } while (this.palabraseleccionada.enabled == false)
+
             this.ap++
             this.item++
             this.termino = ''
@@ -267,33 +291,31 @@ export default {
                 this.actual = this.palabraseleccionada.significado
               }
             })
-          do{
+            do {
               this.palabraseleccionada = palabras.filter(
                 ele => ele.letra == this.palabraseleccionada.nextLetra
               )[0]
-            }while(this.palabraseleccionada.enabled==false)
+            } while (this.palabraseleccionada.enabled == false)
             this.item++
             this.ap++
             this.malas++
-            if(this.malas==3){
-              this.MensajeIntentos=true
+            if (this.malas == 3) {
+              this.MensajeIntentos = true
             }
             this.termino = ''
-           
 
             if (this.item > 26) {
               this.item = 0
             }
           }
         } else {
-           alert('Ya fue resuelta')
+          alert('Ya fue resuelta')
           this.item++
-           do{
-              this.palabraseleccionada = palabras.filter(
-                ele => ele.letra == this.palabraseleccionada.nextLetra
-              )[0]
-            }while(this.palabraseleccionada.enabled==false)
-         
+          do {
+            this.palabraseleccionada = palabras.filter(
+              ele => ele.letra == this.palabraseleccionada.nextLetra
+            )[0]
+          } while (this.palabraseleccionada.enabled == false)
         }
       }
       console.groupEnd('validate')
@@ -307,30 +329,30 @@ export default {
       let palabras = [...this.$store.state.palabrasSeleccionadas]
       palabras.forEach(ele => {
         if (ele.letra == this.palabraseleccionada.letra) {
-          if(this.palabraseleccionada.activa == true){
-            
-          ele.estilo = 'item--saltada'}
+          if (this.palabraseleccionada.activa == true) {
+            ele.estilo = 'item--saltada'
+          }
         }
       })
       //poner en color amarillo
-      do{
-              this.palabraseleccionada = palabras.filter(
-                ele => ele.letra == this.palabraseleccionada.nextLetra
-              )[0]
-            }while(this.palabraseleccionada.enabled==false)
+      do {
+        this.palabraseleccionada = palabras.filter(
+          ele => ele.letra == this.palabraseleccionada.nextLetra
+        )[0]
+      } while (this.palabraseleccionada.enabled == false)
       //  console.log('Saltando')
       console.log(this.palabraseleccionada.nextLetra)
- 
     }
   },
-
+  Terminar () {
+    //pendiente de activar este botón
+  },
   mounted () {
-    
     console.group('Mounted')
     let palabras = [...this.$store.state.palabrasSeleccionadas]
-    
-    this.palabraseleccionada = palabras.find(ele=>{
-      return ele.enabled==true
+
+    this.palabraseleccionada = palabras.find(ele => {
+      return ele.enabled == true
     })
     console.log(this.palabraseleccionada)
     console.groupEnd('Mounted')
@@ -358,7 +380,7 @@ export default {
   margin: -0.625em;
 }
 .circle > *:nth-of-type(1) {
-  transform: rotate(275.4deg) translate(16em) rotate(-278.4deg);
+  transform: rotate(275.4deg) translate(16em) rotate(-275.4deg);
 }
 .circle > *:nth-of-type(2) {
   transform: rotate(288.65deg) translate(16em) rotate(-291.3deg);
@@ -474,10 +496,11 @@ export default {
   background-image: radial-gradient(circle, #222, #777);
 }
 
-
-
 .circle .item--actual {
-  background-image: radial-gradient(circle, rgb(205, 50, 153), rgb(50, 205, 120));
+  background-image: radial-gradient(
+    circle,
+    rgb(205, 50, 153),
+    rgb(50, 205, 120)
+  );
 }
-
 </style>
